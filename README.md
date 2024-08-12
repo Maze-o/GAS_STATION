@@ -41,3 +41,13 @@ AWS 라이트세일 - AWS 가상서버 버전, 3달무료 후 한달에 5천원 
 https://blog.naver.com/nissisoft21/222802517122 - STS 설정
 
 https://golf-dev.tistory.com/39 - API설계
+
+
+HEADER - 로고 :  지도,검색,로그인,로그아웃,즐겨찾기
+
+BODY - 지도
+
+
+
+
+
