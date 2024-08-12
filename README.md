@@ -24,7 +24,7 @@ spring boot - io.start.spring 사이트를 이용하면 쉽게 프로젝트 템�
 git 연동 - https://crong-cat.tistory.com/entry/STS-github-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0github-%EC%B2%98%EC%9D%8C-commit<br/>
 빌드구성 - gradle <br/>
 편집툴 - STS (이클립스 튜닝판) <br/>
-DBMS - 오라클(정보처리산업기사 대비) https://backendcode.tistory.com/266  (오라클 설치) <br/>
+DBMS - MariaDB <br/>
 api - 주유소, 지도 <br/>
 DB Connect - JPA https://velog.io/@seulki412/Spring-Boot-JPA-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0-DB-%EC%98%A4%EB%9D%BC%ED%81%B4-%EC%97%B0%EA%B2%B0-Entity-Id-JPQL  (DB연결) <br/>
 View Template - thymeleaf https://lifere.tistory.com/entry/Spring-Boot-Thymeleaf-%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0  (타임리프 연결)<br/>
