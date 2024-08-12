@@ -8,7 +8,7 @@ class GasApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
+
 	}
 
 }
