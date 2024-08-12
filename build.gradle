@@ -36,8 +36,8 @@ dependencies {
 	//devtools
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	
-	
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	//MariaDB
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.4.1'
 	
 	
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
