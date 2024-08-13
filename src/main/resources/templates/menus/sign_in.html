@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/default_layout}">
+
+<th:block layout:fragment="head">
+	<!-- css -->
+	<link th:href="@{/css/common.css}" rel="stylesheet" />
+</th:block>
+
+<th:block layout:fragment="body">
+	<link th:href="@{/css/user/user.css}" rel="stylesheet">
+</th:block>
+
+<body>
+	<th:block layout:fragment="header" th:include="@{/fragment/header}"></th:block>
+	<div class="signin_warp" layout:fragment="content">
+		<div class="signin_form">
+			<h1>로그인</h1>
+			<form id="form">
+				<div>
+					<input type="text" placeholder="ID(EMAIL)">
+				</div>
+				<div>
+					<input type="password" placeholder="PASSWORD">
+				</div>
+				<input type="button" name="signIn" value="login" id="loginBtn">
+
+				<div>
+					<a href="/findpw">비밀번호 찾기</a>
+				</div>
+
+				<div>
+					<a href="/signup">회원가입 하기</a>
+				</div>
+			</form>
+		</div>
+
+	</div>
+
+
+</body>
+</html>
