@@ -1,0 +1,42 @@
+/* @charset "UTF-8";
+
+
+
+.h_list li {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.h_list li a::after {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 50%;
+    bottom: 0px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+body, html {
+    height: 100%;
+}
+
+.header {
+    background-color: Gray;
+    height: 20%
+}
+
+.content {
+    height:60%;
+}
+
+.footer {
+    background-color: yellow;
+    height: 20%
+}
+
+ */

@@ -1,9 +1,0 @@
-.signin_warp {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 300%;
-	height: 300%;
-	flex: 1;
-}
