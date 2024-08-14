@@ -2,43 +2,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/default_layout}">
+	layout:decorate="~{common/layout}">
 
-<th:block layout:fragment="head">
-	<!-- css -->
-	<link th:href="@{/css/common.css}" rel="stylesheet" />
+<head>
+<title>로그인</title>
+</head>
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" href="css/user/user.css">
+</th:block>
+ 
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/login.js}"></script>
 </th:block>
 
-<th:block layout:fragment="body">
-	<link th:href="@{/css/user/user.css}" rel="stylesheet">
-</th:block>
 
-<body>
-	<th:block layout:fragment="header" th:include="@{/fragment/header}"></th:block>
-	<div class="signin_warp" layout:fragment="content">
-		<div class="signin_form">
-			<h1>로그인</h1>
-			<form id="form">
-				<div>
-					<input type="text" placeholder="ID(EMAIL)">
-				</div>
-				<div>
-					<input type="password" placeholder="PASSWORD">
-				</div>
-				<input type="button" name="signIn" value="login" id="loginBtn">
-
-				<div>
-					<a href="/findpw">비밀번호 찾기</a>
-				</div>
-
-				<div>
-					<a href="/signup">회원가입 하기</a>
-				</div>
-			</form>
-		</div>
-
+<!-- login -->
+<!-- <div class="login_wrap" layout:fragment="content"
+	th:if="${session.loginUser == null}">
+	<div class="login_form">
+		<span>login</span>
+		<form method="post" action="/login">
+			<div class="txt_field">
+				<input type="text" name="userEmail" required> <label>ID
+					(e-mail)</label>
+			</div>
+			<div class="txt_field">
+				<input type="password" name="userPw" required> <label>Password</label>
+			</div>
+			<input type="button" name="signIn" value="login" id="loginBtn">
+			<div class="fg_pw">
+				<a href="/findpw">Forgot your password?</a>
+			</div>
+			<div class="signup_link">
+				Not a member?<a href="/signup">Sign Up</a>
+			</div>
+		</form>
 	</div>
+</div>
+ -->
 
+ <div layout:fragment="content">
+  <div id="wrap" class="back04">
+   <div class="login_box">
+	<div class="login_group">
+	 <form method="post" action="/signin">
+	  <ul class="login_form">
+	   <li class="form_box">
+		<h2 class="id">아이디</h2>
+		<input type="text" name="userId" placeholder="ID를 입력하세요." />
+	   </li>
+	   <li class="form_box">
+		<h2 class="pw">패스워드</h2>
+		<input type="text" name="userPw" placeholder="비밀번호를 입력하세요."/>
+	   </li>
+	   <li>
+		<button type="submit" class="loginBtn">로그인</button>
+	   </li>
+	  </ul>
+	 </form>
+    </div>
+   </div>
+  </div>
+ </div>
 
-</body>
 </html>
