@@ -1,18 +1,19 @@
 package com.project.gas.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 public class UserController {
 
-	@Autowired
-	private UserService userService;
+
+	private final AuthService authservice;
+	
 
 	/*
 	 * @GetMapping("/signin") public String sign_in() { return "/menus/sign_in"; }
@@ -21,28 +22,19 @@ public class UserController {
 	@GetMapping("/signin")
 	public String sign_in() {
 		System.out.println("로그인");
-		return "/menus/sign_in";
+		return "menus/sign_in";
 	}
 
-	/*
-	 * @PostMapping("/login") public String signin(String userId, String userPw,
-	 * HttpSession session, Model model) { User user =
-	 * userService.findByUserId(userId); System.out.println("1"); if (user != null
-	 * && user.equals(userPw)) { System.out.println("2");
-	 * session.setAttribute("user", user);
-	 * 
-	 * return "redirect:/"; } else { model.addAttribute("아이디 또는 비밀번호가 일치하지 않습니다");
-	 * return "redirect:/"; } }
-	 */
 	
-	@PostMapping("/login")
-	public String login(@ModelAttribute User userId) {
-		if (userService.findByUserId(userId)) {
-			return "redirect:/";
-		}
-		return "login";
-		
-	}
+//	 @PostMapping("/signin")
+//	 public String signin() {
+//		 System.out.println("로그인됐다!!!!!");
+//		 
+//		 return "redirect:/";
+//	 }
+//	
+
+
 	
 	
 	
@@ -55,17 +47,27 @@ public class UserController {
 
 	@GetMapping("/signup")
 	public String sign_up() {
-		return "/menus/sign_up";
+		return "menus/sign_up";
+	}
+	
+	@PostMapping("/signup")
+	public String sing_up(SignUpDTO signupDto) {
+		User user = signupDto.toEntity();
+		
+		User userEntity = authservice.signup(user);
+		System.out.println(userEntity);
+		
+		return "redirect:/";
 	}
 
 	@GetMapping("/fav")
 	public String fav() {
-		return "/menus/fav";
+		return "menus/fav";
 	}
 
 	@GetMapping("/findpw")
 	public String findpw() {
-		return "/menus/find_pw";
+		return "menus/find_pw";
 	}
 
 }

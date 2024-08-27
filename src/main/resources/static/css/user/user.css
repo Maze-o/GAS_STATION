@@ -1,18 +1,7 @@
-.signin_warp {
+@charset "UTF-8";
 
-	margin: auto;
-	font-size: 30px;
-	text-align: center;
-
-	height: 100%;
-	width: 100%;
-	padding: 20px;	
-}
-
-.txt_field {
-	width: 100%;
-	box-sizing: border-box;
-	border-radius: 5px;
-	border: none;
-	
+.login_container {
+	display: flex;
+	justify-content: right;
+	align-items: center; 
 }
