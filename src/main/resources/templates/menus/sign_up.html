@@ -9,7 +9,7 @@
 </head>
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" type="text/css" href="css/user/sign.css">
+	<link rel="stylesheet" type="text/css" href="css/user/user.css">
 </th:block>
 
 <th:block layout:fragment="script">
@@ -17,7 +17,7 @@
 </th:block>
 
 
-<div class="email_modal" layout:fragment="content">
+<!-- <div class="email_modal" layout:fragment="content">
 	<div class="email_con">
 		<div class="email_box">
 			<span>이메일 인증</span>
@@ -29,40 +29,21 @@
 				class="email_close">
 		</div>
 	</div>
-</div>
-<div class="signup_wrap" layout:fragment="content" th:if="${session.loginUser == null}">
+</div> -->
+
+<div class="signup_wrap" layout:fragment="content"
+	th:if="${session.loginUser == null}">
 	<div class="signup_form">
 		<span>sign up</span>
 
-		<form id="form">
+		<form action="/signup" method="post">
 
-			<div class="txt_field">
-				<input type="text" name="userEmail" id="email" required>
-				<input type="text" name="anno" id="anno" value="@" readonly>
-				<input id="textEmail" name="textEmail" placeholder="select email" required>
-				<label>e-mail</label>
-				<select name="domain" id="domainSelect" onchange="changeDomain()">
-					<option value="direct">직접입력</option>
-					<option value="gmail.com">gmail.com</option>
-					<option value="naver.com">naver.com</option>
-				</select>
-			</div>
-			<div id="temp">
-				<input type="button" value="이메일인증" id="emailsend">
-			</div>
-			<div class="txt_field">
-				<input type="password" name="userPw" required>
-				<label>Password</label>
-			</div>
-			<div class="txt_field">
-				<input type="password" name="userPwRe" required>
-				<label>confirm Password</label>
-			</div>
-			<div class="txt_field">
-				<input type="text" name="nickname" required>
-				<label>Nickname</label>
-			</div>
-			<input type="button" name="signUp" value="signup" id="joinButton">
+			<input type="text" name="userid" placeholder="ID" required> <input
+				type="password" name="userpw" placeholder="password" required>
+
+
+			<input type="text" name="username" placeholder="yourname" required>
+			<button>회원가입</button>
 		</form>
 	</div>
 </div>

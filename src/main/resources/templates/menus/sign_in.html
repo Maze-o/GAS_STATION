@@ -11,10 +11,11 @@
 <th:block layout:fragment="css">
 	<link rel="stylesheet" type="text/css" href="css/user/user.css">
 </th:block>
- 
+
 <th:block layout:fragment="script">
 	<script defer type="text/javascript" th:src="@{js/login.js}"></script>
 </th:block>
+
 
 
 <!-- login -->
@@ -42,28 +43,29 @@
 </div>
  -->
 
- <div layout:fragment="content">
-  <div id="wrap" class="back04">
-   <div class="login_box">
-	<div class="login_group">
-	 <form method="post" action="/signin">
-	  <ul class="login_form">
-	   <li class="form_box">
-		<h2 class="id">아이디</h2>
-		<input type="text" name="userId" placeholder="ID를 입력하세요." />
-	   </li>
-	   <li class="form_box">
-		<h2 class="pw">패스워드</h2>
-		<input type="text" name="userPw" placeholder="비밀번호를 입력하세요."/>
-	   </li>
-	   <li>
-		<button type="submit" class="loginBtn">로그인</button>
-	   </li>
-	  </ul>
-	 </form>
-    </div>
-   </div>
-  </div>
- </div>
+<!-- method="post" action="/signin" -->
+<body>
+	<div layout:fragment="content">
 
+		<div>
+			<form method="post" action="/signin">
+
+
+
+				<h2 class="id">아이디</h2>
+				<input type="text" name="usernameXX" placeholder="ID를 입력하세요." />
+
+
+
+				<h2 class="pw">패스워드</h2>
+				<input type="password" name="userpw" placeholder="비밀번호를 입력하세요." />
+
+				<button>로그인</button>
+
+
+			</form>
+		</div>
+	</div>
+
+</body>
 </html>
