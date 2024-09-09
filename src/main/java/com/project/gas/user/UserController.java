@@ -67,7 +67,6 @@ public class UserController {
 		
 		System.out.println("userID : " + loginRequest.getUserid());
 		System.out.println("userPW : " + loginRequest.getUserpw());
-		System.out.println("userValue : " + user.getUserid());
 
 //		model.addAttribute("loginType", "session-login");
 //		model.addAttribute("pageName", "세션 로그인");
