@@ -20,13 +20,14 @@ draw.io
 주유소를 클릭하면 주유소에 대한 정보 (네이버 주유소 정보 링크)  
 고속도로 별 주유소 가격 (어려울수도. 보류)
 
+<h2>개발환경</h2>
 java - jdk11 https://kjchoi.co.kr/17 <br/>
 spring boot - io.start.spring 사이트를 이용하면 쉽게 프로젝트 템플릿 파일을 얻을 수 있다 <br/>
 - 프로젝트 import https://data-make.tistory.com/655 (gradle project로 import 해야함) <br/>
 git 연동 - https://crong-cat.tistory.com/entry/STS-github-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0github-%EC%B2%98%EC%9D%8C-commit<br/>
 빌드구성 - gradle <br/>
 편집툴 - STS (이클립스 튜닝판) <br/>
-DBMS - MariaDB Hiedi sql<br/>
+DBMS - MariaDB Heidi sql db명 :  gas-db, table 명 : user<br/>
 api - 주유소, 지도 <br/>
 DB Connect - JPA https://velog.io/@seulki412/Spring-Boot-JPA-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0-DB-%EC%98%A4%EB%9D%BC%ED%81%B4-%EC%97%B0%EA%B2%B0-Entity-Id-JPQL  (DB연결) <br/>
 View Template - thymeleaf https://lifere.tistory.com/entry/Spring-Boot-Thymeleaf-%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84-%EC%82%AC%EC%9A%A9%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0  (타임리프 연결)<br/>
