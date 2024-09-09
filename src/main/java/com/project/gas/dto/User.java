@@ -1,4 +1,4 @@
-package com.project.gas.user;
+package com.project.gas.dto;
 
 import java.time.LocalDate;
 

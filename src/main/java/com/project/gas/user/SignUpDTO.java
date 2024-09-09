@@ -1,5 +1,7 @@
 package com.project.gas.user;
 
+import com.project.gas.dto.User;
+
 import lombok.Data;
 
 @Data
