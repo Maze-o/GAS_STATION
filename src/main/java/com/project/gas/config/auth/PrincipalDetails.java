@@ -7,50 +7,40 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.project.gas.user.User;
+import com.project.gas.dto.User;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class PrincipalDetails implements UserDetails{
-	
+public class PrincipalDetails implements UserDetails {
+
 	private static final long serialVersionUID = 1L;
 
-    private User user;
-    
-    @Builder
-    public PrincipalDetails(User user) {
-        this.user = user;
-    }
-  
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//
-//        Collection<GrantedAuthority> collector = new ArrayList<>();
-//        collector.add(() -> { return user.getUserid();}); // 람다식
-//
-//        return collector;
-//    }
-    
-    
-    @Override //권한 반환 (필요할까..?)
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-    	return List.of(new SimpleGrantedAuthority("user"));
-    }
+	private User user;
+
+	@Builder
+	public PrincipalDetails(User user) {
+		this.user = user;
+	}
 
 
-    //사용자의 ID 반환
-    @Override
-    public String getUsername() {
-        return user.getUserid();
-    }
-    
-    // 사용자의 PW반환
-    @Override
-    public String getPassword() {
-    	return user.getUserpw();
-    }
+	@Override // 권한 반환 (필요할까..?)
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority("user"));
+	}
+
+	// 사용자의 ID 반환
+	@Override
+	public String getUsername() {
+		return user.getUserid();
+	}
+
+	// 사용자의 PW반환
+	@Override
+	public String getPassword() {
+		return user.getUserpw();
+	}
 
 //    @Override
 //    public boolean isAccountNonExpired() {
@@ -67,16 +57,10 @@ public class PrincipalDetails implements UserDetails{
 //        return true;
 //    }
 
-    
-    // 계정 사용 가능 여부 반환
-    @Override
-    public boolean isEnabled() {
-    	return true; // true = 사용가능
-    }
+	// 계정 사용 가능 여부 반환
+	@Override
+	public boolean isEnabled() {
+		return true; // true = 사용가능
+	}
 
-	
-	
-
-	
 }
- 
