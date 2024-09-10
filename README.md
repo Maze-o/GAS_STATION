@@ -3,6 +3,9 @@
 
 https://ziszini.tistory.com/121 /카카오 지도 api 적용
 
+토큰 키
+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
+
 <h3>프로젝트 설계</h3>
 
 <h1>피그마 이용 해보자!!</h1>
