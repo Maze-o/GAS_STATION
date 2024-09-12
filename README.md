@@ -8,7 +8,8 @@ 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
 
 <h3>프로젝트 설계</h3>
 
-<h1>피그마 이용 해보자!!</h1>
+
+패지키 구조 - https://velog.io/@jsb100800/Spring-boot-directory-package
 
 
 개념(조직화,관계도,그림,무슨 기능을 넣을것인지) -> 논리(탭에 대한 필요한 세부항목) -> 물리(개발환경 구축)
