@@ -12,8 +12,6 @@ public class LoginRequest {
 
 	private String userid;
     private String userpw;
-<<<<<<< HEAD
     private String username;
-=======
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
+
 }
