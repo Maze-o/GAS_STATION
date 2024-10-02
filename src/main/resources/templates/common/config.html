@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
     <th:block th:fragment="configFragment">
+<<<<<<< HEAD
 				<link rel="icon" href="data:,">
         <!-- Content Page의 CSS fragment 삽입 -->
         <th:block layout:fragment="css">
@@ -18,6 +19,24 @@
 
 
         </th:block>
+=======
+
+<!-- 	    js
+	    <script th:src="@{js/jquery.min.js}"></script>
+	    <script defer th:src="@{js/chat.js}"></script>
+	    <script th:src="@{js/modal.js}"></script>
+	    css
+	    <link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+        <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css}" />
+ -->
+        <!-- Content Page의 CSS fragment 삽입 -->
+        <th:block layout:fragment="css"></th:block>
+
+        <!-- Content Page의 script fragment 삽입 -->
+        <th:block layout:fragment="script"></th:block>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
         
     </th:block>
 </html>

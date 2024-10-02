@@ -15,7 +15,11 @@ import lombok.Data;
 @Data
 public class PrincipalDetails implements UserDetails {
 
+<<<<<<< HEAD
 //	private static final long serialVersionUID = 1L;
+=======
+	private static final long serialVersionUID = 1L;
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 	private User user;
 
@@ -35,13 +39,18 @@ public class PrincipalDetails implements UserDetails {
 	public String getUsername() {
 		return user.getUserid();
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 	// 사용자의 PW반환
 	@Override
 	public String getPassword() {
 		return user.getUserpw();
 	}
 
+<<<<<<< HEAD
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -56,6 +65,22 @@ public class PrincipalDetails implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+=======
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 	// 계정 사용 가능 여부 반환
 	@Override
@@ -63,6 +88,9 @@ public class PrincipalDetails implements UserDetails {
 		return true; // true = 사용가능
 	}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 }

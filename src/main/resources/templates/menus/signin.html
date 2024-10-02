@@ -9,17 +9,28 @@
 </head>
 
 <th:block layout:fragment="css">
+<<<<<<< HEAD
 	<link rel="stylesheet"  th:href="@{/css/user/user.css}">
 </th:block>
 <th:block layout:fragment="script">
 	<script defer type="text/javascript" th:src="@{js/user.js}"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+=======
+	<link rel="stylesheet" type="text/css" href="css/user/user.css">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/login.js}"></script>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 </th:block>
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 <!-- login -->
 <!-- <div class="login_wrap" layout:fragment="content"
 	th:if="${session.loginUser == null}">
@@ -48,12 +59,18 @@
 <!-- method="post" action="/signin" -->
 <body>
 	<div layout:fragment="content">
+<<<<<<< HEAD
 	
 	<a href="/">홈으로 가기</a>
 	<a href="/signup">회원가입 하러 가기</a>
 
 		<div>
 			<form id="loginForm" th:action="@{/signin}" th:method="POST"  >	
+=======
+
+		<div>
+			<form th:method="post"  >	
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 
 
@@ -66,7 +83,11 @@
 				<input type="password"  name="userpw" placeholder="비밀번호를 입력하세요." />
 
 				<button type="submit">로그인</button>
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 			</form>
 		</div>

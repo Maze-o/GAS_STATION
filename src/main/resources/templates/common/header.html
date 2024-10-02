@@ -4,6 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	th:fragment="headerFragment">
 
+<<<<<<< HEAD
 <!-- <th:block layout:fragment="css">
 	<link rel="stylesheet" type="text/css" href="css/user/user.css">
 </th:block> -->
@@ -15,6 +16,18 @@
 		<img src="asset/logo.png">
 	</a> -->
 	<!-- <ul class="h_list">
+=======
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" href="css/user/user.css">
+</th:block>
+<!-- header -->
+
+<div class="header">
+	<!-- <a href="/" class="h_logo" title="logo">
+		<img src="asset/logo.png">
+	</a> -->
+	<ul class="h_list">
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 		<li><a href="/">지도</a></li>	
 		<li><a href="/signup">회원가입</a></li>
 		<li><a href="/signin">로그인</a></li>
@@ -27,9 +40,15 @@
 					value="signin"></a> <a href="/signup"><input type="button"
 					name="signUp" value="signup"></a>
 			</div>
+<<<<<<< HEAD
 		</div> -->
 		<!-- 세션에 로그인정보가 들어있으면 로그아웃, 마이페이지 버튼 나옴 -->
 		<!-- <div th:if="${session.loginUser != null}">
+=======
+		</div>
+		<!-- 세션에 로그인정보가 들어있으면 로그아웃, 마이페이지 버튼 나옴 -->
+		<div th:if="${session.loginUser != null}">
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 			<div class="login_container">
 				<a href="/logout"> <input type="button" name="logout"
 					value="logout">
@@ -38,7 +57,11 @@
 				</a>
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div> -->
+=======
+	</div>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 </div>
 
 </html>

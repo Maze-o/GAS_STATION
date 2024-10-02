@@ -13,8 +13,12 @@
 </th:block>
 
 <th:block layout:fragment="script">
+<<<<<<< HEAD
 	<script defer type="text/javascript" th:src="@{js/user.js}"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+=======
+	<script defer type="text/javascript" th:src="@{js/user/join.js}"></script>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 </th:block>
 
 
@@ -34,6 +38,7 @@
 
 <div class="signup_wrap" layout:fragment="content"
 	th:if="${session.loginUser == null}">
+<<<<<<< HEAD
 	
 	<a href="/">홈으로 가기</a>
 	<a href="/signin">로그인 하러 가기</a>
@@ -42,13 +47,23 @@
 		<span>sign up</span>
 
 		<form id="signupForm" th:action="@{/signup}" method="post">
+=======
+	<div class="signup_form">
+		<span>sign up</span>
+
+		<form action="/signup" method="post">
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 			<input type="text" name="userid" placeholder="ID" required> <input
 				type="password" name="userpw" placeholder="password" required>
 
 
 			<input type="text" name="username" placeholder="yourname" required>
+<<<<<<< HEAD
 			<button type="submit">회원가입</button>
+=======
+			<button>회원가입</button>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 		</form>
 	</div>
 </div>

@@ -10,7 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+<<<<<<< HEAD
 import jakarta.persistence.Table;
+=======
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +23,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 기본 생성자 자동 추가
 @AllArgsConstructor
 @Entity // entity
+<<<<<<< HEAD
 @Table(name = "user")
+=======
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 @Data
 public class User {
 

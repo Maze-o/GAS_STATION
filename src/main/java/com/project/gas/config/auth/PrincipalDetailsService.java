@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class PrincipalDetailsService implements UserDetailsService {
 	private final UserRepository userRepo;
 
+<<<<<<< HEAD
 	// 유저의 아이디를 받아서 DB와 대치시켜 리턴값을 반환
 //	@Override
 //	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
@@ -41,4 +42,19 @@ public class PrincipalDetailsService implements UserDetailsService {
 		// User를 PrincipalDetails로 변환하여 반환
 		return new PrincipalDetails(user);
 	}
+=======
+
+	// 유저의 아이디를 받아서 DB와 대치시켜 리턴값을 반환 
+	@Override
+	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
+
+		User user = userRepo.findByuserid(userid);
+		if (user != null) {
+			return new PrincipalDetails(user);
+		}
+		return null;
+	}
+	
+	
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 }

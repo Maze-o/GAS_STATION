@@ -1,7 +1,10 @@
 package com.project.gas.user;
 
+<<<<<<< HEAD
 import java.util.Optional;
 
+=======
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.gas.dto.User;
@@ -12,9 +15,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	boolean existsByuserid(String userid);
 	
+<<<<<<< HEAD
 //	User findByuserid(String userid);
 	Optional<User> findByuserid(String userid);
 	
+=======
+	User findByuserid(String userid);
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 
 }
