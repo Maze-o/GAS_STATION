@@ -354,6 +354,7 @@ function addCategoryClickEvent() {
         children = category.children;
 
     for (var i = 0; i < children.length; i++) {
+		
         children[i].onclick = onClickCategory;
     }
 }
