@@ -1,6 +1,5 @@
 package com.project.gas.user;
 
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -8,11 +7,6 @@ import java.util.Optional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-=======
-import java.util.Optional;
-
-import org.springframework.security.crypto.bcrypt.BCrypt;
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.gas.dto.JoinRequest;
 import com.project.gas.dto.LoginRequest;
 import com.project.gas.dto.User;
-<<<<<<< HEAD
 import com.project.gas.jwt.JwtUtil;
-=======
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,19 +24,14 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepo;
 	private final BCryptPasswordEncoder encoder;
-<<<<<<< HEAD
 	private final JwtUtil jwtUtil;
 	private final AuthenticationManager authenticationManager;
 
 	// 아이디 중복 체크
-=======
-
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 	public boolean checkLoginIdDuplicate(String userid) {
 		return userRepo.existsByuserid(userid);
 	}
 
-<<<<<<< HEAD
 	// 유저 아이디로 사용자 찾기
 	private Optional<User> findUserByUsername(String username) {
 		return userRepo.findByuserid(username);
@@ -53,7 +39,7 @@ public class UserService {
 
 	// 회원가입 서비스 처리
 	public void signup(JoinRequest joinRequest) {
-		validateSignupRequest(joinRequest); // 회원가입 시도 시 처리할 로직 
+		validateSignupRequest(joinRequest); // 회원가입 시도 시 처리할 로직
 		securityJoin(joinRequest); // 비밀번호 암호화 처리 후 저장
 	}
 
@@ -69,7 +55,6 @@ public class UserService {
 			throw new IllegalArgumentException("비밀번호는 필수입니다.");
 		}
 
-		
 		// 아이디가 DB에 저장된 정보랑 틀릴 경우
 		User user = findUserByUsername(loginRequest.getUserid())
 				.orElseThrow(() -> new UsernameNotFoundException("아이디가 존재하지 않습니다."));
@@ -77,22 +62,16 @@ public class UserService {
 		// 비밀번호가 DB에 저장된 정보랑 틀릴 경우 (비밀번호 암호화를 진행시키고 대조해야함)
 		if (!verifyPassword(loginRequest.getUserpw(), user)) {
 			throw new BadCredentialsException("비밀번호가 틀립니다.");
-
 		}
 
 		// JWT 생성
-		
 		String token = jwtUtil.generateToken(user.getUserid());
-		
+
 		// 유저의 닉네임을 뷰에 담기 위해서 Map에 토큰정보와 유저네임을 키벨류형태로 저
 		Map<String, String> response = new HashMap<>();
-		
 		response.put("token", token);
-		System.out.println("username : " + user.getUsername());
 		response.put("username", user.getUsername());
-		
-		
-		
+
 		return response;
 	}
 
@@ -103,44 +82,9 @@ public class UserService {
 
 	public User getLoginMemberById(Long userid) {
 		return userRepo.findById(userid).orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다.")); // 예외 처리
-=======
-	// 회원가입 서비스 처리
-	public void signup(JoinRequest joinRequest) {
-		userRepo.save(joinRequest.toEntity());
-	}
-
-	// 로그인 서비스 처리
-	public User signin(LoginRequest loginRequest) {
-
-		User findUser = userRepo.findByuserid(loginRequest.getUserid());
-
-		System.err.println("service : " + findUser);
-
-		if (findUser == null) {
-			System.out.println("아이디틀렸어!~!!!!!!");
-			return null;
-		}
-
-
-		if (BCrypt.checkpw(loginRequest.getUserpw(), findUser.getUserpw())) {
-
-			return findUser;
-		}
-		return null;
-	}
-
-	public User getLoginMemberById(Long userid) {
-		if (userid == null)
-			return null;
-
-		Optional<User> findMember = userRepo.findById(userid);
-		return findMember.orElse(null);
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
-
 	}
 
 	// 회원가입 비밀번호 암호화 처리
-<<<<<<< HEAD
 	private void securityJoin(JoinRequest joinRequest) {
 		joinRequest.setUserpw(encoder.encode(joinRequest.getUserpw()));
 		userRepo.save(joinRequest.toEntity());
@@ -156,17 +100,4 @@ public class UserService {
 			throw new IllegalArgumentException("비밀번호는 필수입니다.");
 		}
 	}
-
-=======
-	public void securityJoin(JoinRequest joinRequest) {
-		if (userRepo.existsByuserid(joinRequest.getUserid())) {
-			return;
-		}
-
-		joinRequest.setUserpw(encoder.encode(joinRequest.getUserpw()));
-
-		userRepo.save(joinRequest.toEntity());
-	}
-
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 }

@@ -1,19 +1,12 @@
 plugins {
-<<<<<<< HEAD
     id 'java'
     id 'org.springframework.boot' version '3.1.1'
     id 'io.spring.dependency-management' version '1.1.5'
-=======
-	id 'java'
-	id 'org.springframework.boot' version '3.3.2'
-	id 'io.spring.dependency-management' version '1.1.6'
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 }
 
 group = 'com.project'
 version = '0.0.1-SNAPSHOT'
 
-<<<<<<< HEAD
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
@@ -62,56 +55,3 @@ dependencies {
 tasks.withType(Test) {
     useJUnitPlatform()
 }
-=======
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	//jpa
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	// spring security	
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-
-	//thymeleaf
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
-
-	//lombok
-	compileOnly 'org.projectlombok:lombok'
-	//implementation('org.projectlombok:lombok')
-	annotationProcessor 'org.projectlombok:lombok'
-	//testCompileOnly 'org.projectlombok:lombok'
-	//testAnnotationProcessor 'org.projectlombok:lombok'
-	
-	//devtools
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	
-	//MariaDB
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.4.1'
-	
-	
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	// https://mvnrepository.com/artifact/org.glassfish/javax.annotation implementation group: 'org.glassfish', name: 'javax.annotation', version: '10.0-b28'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
-}
->>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
