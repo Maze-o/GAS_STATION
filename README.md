@@ -7,7 +7,7 @@ https://ziszini.tistory.com/121 /카카오 지도 api 적용
 
 
 패지키 구조 - https://velog.io/@jsb100800/Spring-boot-directory-package
-
+'
 
 개념(조직화,관계도,그림,무슨 기능을 넣을것인지) -> 논리(탭에 대한 필요한 세부항목) -> 물리(개발환경 구축)
 draw.io
