@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
@@ -17,4 +18,25 @@
 
 </body>
 
+=======
+
+<!DOCTYPE html>
+<html lang="ko"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="common/config :: configFragment">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+<!-- 	<th:block layout:fragment="content"></th:block> -->
+	<div class="wrap">
+		<!-- header -->
+		<th:block th:replace="common/header :: headerFragment"></th:block>
+		<!-- content -->
+		<th:block layout:fragment="content"></th:block>
+	</div>
+</body>
+>>>>>>> 688f1d2f54dd7919aa84c038bb52fd8b528fd4cc
 </html>
