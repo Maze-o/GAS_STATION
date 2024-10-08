@@ -54,7 +54,7 @@ https://jong-bae.tistory.com/32
 
 롬복 오류 ->  https://velog.io/@ibd1229/Spring-Boot-3.0-Slf4j-%EC%82%AC%EC%9A%A9%EC%8B%9Clog-cannot-be-resolved-%EC%97%90%EB%9F%AC-Lombok-%EC%9D%B8%EC%8B%9D-%EC%95%88%EB%90%A8-%EC%84%A4%EC%B9%98%ED%96%88%EB%8A%94%EB%8D%B0%EB%8F%84-%EC%95%88%EB%90%A8-%ED%95%B4%EA%B2%B0
 
-
+참고할 로그인 디자인 - 원티드
 
 
 
