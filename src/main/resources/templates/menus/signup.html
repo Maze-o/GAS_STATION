@@ -13,7 +13,7 @@
 </th:block>
 
 <th:block layout:fragment="script">
-	<script defer type="text/javascript" th:src="@{js/user.js}"></script>
+	<script defer type="text/javascript" th:src="@{/js/user.js}"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </th:block>
 
@@ -21,7 +21,7 @@
 	th:if="${session.loginUser == null}">
 	
 	<a href="/">홈으로 가기</a>
-	<a href="/signin">로그인 하러 가기</a>
+	<a href="/login">로그인 하러 가기</a>
 	
 	<div class="signup_form">
 		<span>sign up</span>

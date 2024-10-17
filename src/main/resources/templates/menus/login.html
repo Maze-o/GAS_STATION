@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+
+<head>
+	<title>로그인</title>
+</head>
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/user/user.css}">
+</th:block>
+<th:block layout:fragment="script">
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script defer type="text/javascript" th:src="@{/js/user.js}"></script> -->
+</th:block>
+
+<body>
+	<div layout:fragment="content" class="content">
+
+
+		<div class="login-page">
+		
+			<div class="login-page__btns">
+				<button id="googleLoginBtn">구글로 로그인</button>
+				<button id="naverLoginBtn">네이버로 로그인</button>
+				<button id="loginEntryPagebtn">일반 사용자로 로그인</button>
+			</div>
+
+			<div class="login-page__links">
+				<a href="/">홈으로 가기</a>
+				<a href="/signup">회원가입 하러 가기</a>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

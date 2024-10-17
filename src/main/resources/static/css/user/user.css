@@ -1,7 +1,18 @@
 @charset "UTF-8";
 
-.login_container {
+.login-page {
 	display: flex;
-	justify-content: right;
-	align-items: center; 
+	justify-content: center;
+	align-items: center;
+	width : 400px;
+	height: 500px;
+	margin: auto;
+
 }
+
+.login-page__btns {
+	/* flex-direction: row; */
+
+}
+
+.login-page__links {}

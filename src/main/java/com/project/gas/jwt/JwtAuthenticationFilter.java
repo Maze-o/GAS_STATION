@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,32 +15,43 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.project.gas.config.auth.PrincipalDetails;
+import com.project.gas.auth.PrincipalDetails;
+import com.project.gas.user.UserRepository;
 
 import java.io.IOException;
 
 @Component
+@AllArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	// JwtUtil과 UserDetailsService를 주입받음
-	private final JwtUtil jwtUtil; // JWT 유틸리티 클래스
+	private final JwtProvider jwtProvider; // JWT 유틸리티 클래스
 	private final UserDetailsService userDetailsService; // 사용자 세부 정보 서비스를 위한 인터페이스
-
-	// 생성자에서 주입받은 의존성 초기화
-	public JwtAuthenticationFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
-		this.jwtUtil = jwtUtil;
-		this.userDetailsService = userDetailsService;
-	}
+//	private final UserRepository userRepo;
 
 	@Override
-	protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
-			@NonNull FilterChain chain) throws ServletException, IOException {
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+			throws ServletException, IOException {
+
 		// 요청 헤더에서 Authorization 정보를 가져옴
 		final String authHeader = request.getHeader("Authorization");
 		// JWT 토큰을 저장할 변수
 		final String jwt;
 		// 사용자 이름을 저장할 변수
 		final String username;
+
+		// 요청 URI 로그 출력
+//		System.out.println("Request URI: " + request.getRequestURI());
+
+		// OAuth2 인증 요청 또는 콜백 처리하는 경우, 다음 필터로 진행
+		if (request.getRequestURI().contains("/oauth2/authorization/")
+				|| request.getRequestURI().contains("/signin/oauth2/code/")) {
+//			System.out.println("헤더 정보 : " + request.getHeader("Authorization"));
+//			System.out.println("OAUTH2 요청 처리중 (jwtFilter)");
+//			System.out.println("현재 SecurityContext에 인증 정보: " + SecurityContextHolder.getContext().getAuthentication());
+			chain.doFilter(request, response);
+			return; // OAuth2 인증 요청은 필터를 통과시킴
+		}
 
 		// Authorization 헤더가 없거나 Bearer로 시작하지 않으면 다음 필터로 진행
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -49,16 +61,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		// JWT 토큰을 추출
 		jwt = authHeader.substring(7); // "Bearer " 다음의 토큰을 가져옴
-		username = jwtUtil.extractUsername(jwt); // JWT에서 사용자 이름 추출
-
+		username = jwtProvider.extractUsername(jwt); // JWT에서 사용자 이름 추출
+		System.out.println("Request URL: " + request.getRequestURL());
+		System.out.println("Authorization Header: " + request.getHeader("Authorization"));
 		// 사용자 이름이 null이 아니고, 현재 SecurityContext에 인증 정보가 없을 때
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-			
+
 			// UserDetails를 PrincipalDetails로 캐스팅
 			PrincipalDetails principalDetails = (PrincipalDetails) userDetailsService.loadUserByUsername(username);
 
 			// JWT 토큰이 유효한지 확인
-			if (jwtUtil.isTokenValid(jwt, principalDetails.getUsername())) {
+			if (jwtProvider.isTokenValid(jwt, principalDetails.getUsername())) {
 				// 유효한 토큰이라면, UsernamePasswordAuthenticationToken 생성
 				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
 						principalDetails, null, principalDetails.getAuthorities());
@@ -72,4 +85,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		// 다음 필터로 요청을 전달
 		chain.doFilter(request, response);
 	}
+
 }

@@ -10,10 +10,11 @@ import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtUtil {
+public class JwtProvider {
 
 	private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // 비밀 키 생성
 	private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10시간 유효
+	private static final long REFRESH_TOKEN_EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 7; // 7일 유효
 
 	// 토큰 생성 메서드
 	public String generateToken(String username) {
@@ -28,6 +29,18 @@ public class JwtUtil {
 				.claim("uniqueId", uniqueIdentifier) // 유니크한 값 추가
 				.signWith(key) // 비밀 키로 서명
 				.compact(); // JWT 문자열 생성
+	}
+
+	// 리프레시 토큰 생성 메서드
+	public String generateRefreshToken(String username) {
+		Date now = new Date();
+		Date expiryDate = new Date(now.getTime() + REFRESH_TOKEN_EXPIRATION_TIME);
+
+		return Jwts.builder().setSubject(username)
+				.setIssuedAt(now)
+				.setExpiration(expiryDate)
+				.signWith(key)
+				.compact();
 	}
 
 	// 토큰에서 사용자 이름 추출

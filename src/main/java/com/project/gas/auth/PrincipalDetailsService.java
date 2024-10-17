@@ -1,4 +1,4 @@
-package com.project.gas.config.auth;
+package com.project.gas.auth;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,22 +16,6 @@ public class PrincipalDetailsService implements UserDetailsService {
 	private final UserRepository userRepo;
 
 	// 유저의 아이디를 받아서 DB와 대치시켜 리턴값을 반환
-//	@Override
-//	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
-//
-//		User user = userRepo.findByuserid(userid);
-//		if (user != null) {
-//			return new PrincipalDetails(user);
-//		}
-//		return null;
-//	}
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		// 사용자 조회 로직
-//		return userRepo.findByuserid(username)
-//				.orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
-//	}
-
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// 사용자 조회 로직
@@ -40,5 +24,5 @@ public class PrincipalDetailsService implements UserDetailsService {
 
 		// User를 PrincipalDetails로 변환하여 반환
 		return new PrincipalDetails(user);
-	}
+	}	
 }

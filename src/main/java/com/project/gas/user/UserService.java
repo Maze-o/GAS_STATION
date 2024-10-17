@@ -4,17 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.gas.auth.CustomOAuth2UserService;
 import com.project.gas.dto.JoinRequest;
 import com.project.gas.dto.LoginRequest;
 import com.project.gas.dto.User;
-import com.project.gas.jwt.JwtUtil;
+import com.project.gas.jwt.JwtProvider;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,8 +25,10 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepo;
 	private final BCryptPasswordEncoder encoder;
-	private final JwtUtil jwtUtil;
-	private final AuthenticationManager authenticationManager;
+	private final JwtProvider jwtProvider;
+//	private final CustomOAuth2UserService oAuth2UserService; // 추가된 의존성
+
+//	private final AuthenticationManager authenticationManager;
 
 	// 아이디 중복 체크
 	public boolean checkLoginIdDuplicate(String userid) {
@@ -38,9 +41,21 @@ public class UserService {
 	}
 
 	// 회원가입 서비스 처리
-	public void signup(JoinRequest joinRequest) {
-		validateSignupRequest(joinRequest); // 회원가입 시도 시 처리할 로직
-		securityJoin(joinRequest); // 비밀번호 암호화 처리 후 저장
+	public User signup(JoinRequest joinRequest) {
+		validateSignupRequest(joinRequest);
+
+		User newUser = new User();
+		newUser.setUserid(joinRequest.getUserid());
+		newUser.setUsername(joinRequest.getUsername());
+		newUser.setUserpw(encoder.encode(joinRequest.getUserpw()));
+
+		return userRepo.save(newUser);
+	}
+
+	// 유저 등록 여부 확인 및 회원가입
+	public User registerUserIfNotExists(JoinRequest joinRequest) {
+		return userRepo.findByuserid(joinRequest.getUserid()).orElseGet(() -> signup(joinRequest)); // 이미 있으면 가져오고 없으면
+																									// 새로 가입
 	}
 
 	// 로그인 서비스 처리
@@ -65,7 +80,7 @@ public class UserService {
 		}
 
 		// JWT 생성
-		String token = jwtUtil.generateToken(user.getUserid());
+		String token = jwtProvider.generateToken(user.getUserid());
 
 		// 유저의 닉네임을 뷰에 담기 위해서 Map에 토큰정보와 유저네임을 키벨류형태로 저
 		Map<String, String> response = new HashMap<>();
@@ -80,15 +95,15 @@ public class UserService {
 		return encoder.matches(rawPassword, user.getUserpw());
 	}
 
-	public User getLoginMemberById(Long userid) {
-		return userRepo.findById(userid).orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다.")); // 예외 처리
-	}
+//	public User getLoginMemberById(Long userid) {
+//		return userRepo.findById(userid).orElseThrow(() -> new UsernameNotFoundException("유저를 찾을 수 없습니다.")); // 예외 처리
+//	}
 
 	// 회원가입 비밀번호 암호화 처리
-	private void securityJoin(JoinRequest joinRequest) {
-		joinRequest.setUserpw(encoder.encode(joinRequest.getUserpw()));
-		userRepo.save(joinRequest.toEntity());
-	}
+//	private void securityJoin(JoinRequest joinRequest) {
+//		joinRequest.setUserpw(encoder.encode(joinRequest.getUserpw()));
+//		userRepo.save(joinRequest.toEntity());
+//	}
 
 	// 회원가입 요청 검증
 	private void validateSignupRequest(JoinRequest joinRequest) {

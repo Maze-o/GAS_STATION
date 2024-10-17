@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{common/layout}">
+
+<head>
+<title>로그인</title>
+</head>
+
+
+<body>
+	<div layout:fragment="content" class="content">
+		<h2>로그인!!</h2>
+		
+		<form id="loginForm" th:action="@{/login/authenticate}" th:method="POST">
+		
+				<label>아이디</label>
+				<input type="text" name="userid" placeholder="아이디를 입력해주세요." required />
+				
+				<label>비밀번호</label>
+				<input type="password" name="userpw" placeholder="비밀번호를 입력해주세요." required />
+			
+			<button type="submit" >로그인</button>
+		</form>
+	</div>
+
+
+</body>
+
+
+</html>
