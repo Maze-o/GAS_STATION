@@ -1,22 +1,20 @@
 package com.project.gas.user;
 
-import java.security.Principal;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gas.dto.FindPwRequest;
 import com.project.gas.dto.JoinRequest;
 import com.project.gas.dto.LoginRequest;
 import com.project.gas.jwt.JwtProvider;
@@ -62,17 +60,16 @@ public class UserController {
 			return ResponseEntity.status(401).body("유효하지 않은 JWT 토큰입니다.");
 		}
 	}
-	
+
 	@GetMapping("/login")
 	public String loginStepHandler(@RequestParam(value = "step", required = false) String step, Model model) {
-	    if ("PASSWORD_ENTRY".equals(step)) {
-	        // 비밀번호 입력 단계로 이동
-	        return "menus/loginEntryPage"; // 이메일과 비밀번호 입력 화면
-	    }
-	    // 그 외 기본 로그인 페이지
-	    return "menus/login";
+		if ("PASSWORD_ENTRY".equals(step)) {
+			// 비밀번호 입력 단계로 이동
+			return "menus/loginEntryPage"; // 이메일과 비밀번호 입력 화면
+		}
+		// 그 외 기본 로그인 페이지
+		return "menus/login";
 	}
-
 
 //	@GetMapping("/login")
 //	public String signin(Model model, Principal principal,
@@ -130,6 +127,25 @@ public class UserController {
 
 	@GetMapping("/findpw")
 	public String findpw() {
-		return "menus/find_pw";
+		return "menus/findpw";
 	}
+
+	@PostMapping("/findpw")
+	public ResponseEntity<Map<String, String>> recoverPassword(@RequestBody FindPwRequest findPwRequest) {
+		try {
+		String password = userService.findPw(findPwRequest); // 유저 비밀번호 찾기 (암호화 전의 비밀번호를 받아옴)
+			System.out.println("성공" + password);
+			return ResponseEntity.ok(Map.of("userpw", password )); // 암호화 하기 전의 비밀번호를 프론트로 전달
+		} catch (Exception e) {	
+			System.out.println("에러 발생" + e.getMessage());	
+			return ResponseEntity.badRequest().body(Map.of("message", e.getMessage())); // 에러 발생시 프론트로 전달
+		}
+		
+	}
+	
+	@GetMapping("/changepw")
+	public String changepw()  {
+		return "menus/changepw";
+	}
+
 }

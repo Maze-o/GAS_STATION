@@ -1,28 +1,54 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/layout}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
 
 <head>
-<title>로그인</title>
+	<title>일반 사용자 로그인</title>
 </head>
 
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/user/login.css}">
+	<!-- 구글 아이콘 -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+</th:block>
+<th:block layout:fragment="script">
+</th:block>
 
 <body>
-	<div layout:fragment="content" class="content">
-		<h2>로그인!!</h2>
-		
-		<form id="loginForm" th:action="@{/login/authenticate}" th:method="POST">
-		
-				<label>아이디</label>
-				<input type="text" name="userid" placeholder="아이디를 입력해주세요." required />
-				
-				<label>비밀번호</label>
-				<input type="password" name="userpw" placeholder="비밀번호를 입력해주세요." required />
-			
-			<button type="submit" >로그인</button>
-		</form>
+	<div layout:fragment="content" class="login-content">
+
+		<div class="page-header">
+			<a href="/login" class="material-symbols-outlined" style="font-size: 48px">
+				chevron_left
+			</a>
+		</div>
+
+		<div class="login-container">
+			<h2 class="login-page-logo">일반 사용자로 로그인</h2>
+			<form class="login-form" id="loginForm" th:action="@{/login/authenticate}" th:method="POST">
+
+				<label class="login-label">아이디</label>
+				<input type="text" name="userid" class="login-input" placeholder="아이디를 입력해주세요." required />
+
+				<label class="login-label password-label">비밀번호</label>
+				<input type="password" name="userpw" class="login-input" placeholder="비밀번호를 입력해주세요." required />
+
+				<div class="login-remember-block">
+					<input type="checkbox" id="login_session" class="login-checkbox">
+					<label for="login_session">로그인 유지</label>
+				</div>
+				<button type="submit" class="login-submit-btn">로그인</button>
+
+				<div class="page-link-block">
+					<p class="and">또는</p>
+					<div class="page-link-btn">
+						<a href="/findpw" class="findpw-btn">비밀번호 찾기</a>
+						<a href="/signup" class="signup-btn">회원가입 하기</a>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 
 

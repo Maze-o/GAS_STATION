@@ -21,7 +21,6 @@ import com.project.gas.auth.CustomOAuth2UserService;
 import com.project.gas.auth.OAuth2ErrorHandler;
 import com.project.gas.auth.OAuth2SuccessHandler;
 import com.project.gas.auth.PrincipalDetailsService;
-import com.project.gas.filter.CustomAccessFilter;
 import com.project.gas.jwt.JwtAuthenticationFilter;
 
 import lombok.AllArgsConstructor;
@@ -72,7 +71,7 @@ public class SecurityConfig {
 
 				// 필터 (Jwt)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.addFilterAfter(new CustomAccessFilter(), UsernamePasswordAuthenticationFilter.class)
+//				.addFilterAfter(new CustomAccessFilter(), UsernamePasswordAuthenticationFilter.class)
 				.addFilterAfter(jwtAuthFilter, OAuth2LoginAuthenticationFilter.class);
 
 		return http.build();

@@ -1,39 +1,58 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{common/layout}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
 
 <head>
-<title>회원가입</title>
+	<title>회원가입</title>
 </head>
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" type="text/css" href="css/user/user.css">
+	<link rel="stylesheet" type="text/css" href="css/user/signup.css">
+	<!-- 구글 아이콘 -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
 </th:block>
 
 <th:block layout:fragment="script">
-	<script defer type="text/javascript" th:src="@{/js/user.js}"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script defer type="text/javascript" th:src="@{/js/signup.js}"></script>
 </th:block>
 
-<div class="signup_wrap" layout:fragment="content"
-	th:if="${session.loginUser == null}">
-	
-	<a href="/">홈으로 가기</a>
-	<a href="/login">로그인 하러 가기</a>
-	
-	<div class="signup_form">
-		<span>sign up</span>
+<div layout:fragment="content" class="signup-content">
 
-		<form id="signupForm" th:action="@{/signup}" method="post">
+	<div class="page-header">
+		<a href="/login" class="material-symbols-outlined" style="font-size: 48px">
+			chevron_left
+		</a>
+	</div>
 
-			<input type="text" name="userid" placeholder="ID" required> <input
-				type="password" name="userpw" placeholder="password" required>
+	<div class="signup-container">
 
+		<form id="signupForm" class="signup-form" th:action="@{/signup}" method="post">
+			<h2 class="signup-page-logo">회원가입</h2>
 
-			<input type="text" name="username" placeholder="yourname" required>
-			<button type="submit">회원가입</button>
+			<label class="signup-label">아이디</label>
+			<input type="text" id="userId" name="userid" placeholder="아이디를 입력해주세요" required>
+
+			<label class="signup-label">비밀번호</label>
+			<input type="password" id="userPw" name="userpw" placeholder="비밀번호를 입력해주세요" required>
+
+			<label class="signup-label">비밀번호 재입력</label>
+			<input type="password" id="confirmPw" name="userpwchk" placeholder="비밀번호를 재입력해주세요" required>
+
+			<label class="signup-label">이름</label>
+			<input type="text" id="userName" name="username" placeholder="이름을 입력해주세요" required>
+
+			<button type="submit" id="signUpBtn" class="btn-disabled">회원가입</button>
+
+			<div class="page-link-block">
+				<p class="and">또는</p>
+
+				<div class="page-link-btn">
+					<a href="/login" class="login-btn">로그인 하러 가기</a>
+					<a href="/" class="home-btn">홈으로 가기</a>
+				</div>
+			</div>
 		</form>
 	</div>
 </div>

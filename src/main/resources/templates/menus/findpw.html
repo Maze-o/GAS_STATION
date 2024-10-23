@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+
+<head>
+	<title>비밀번호 찾기</title>
+</head>
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/user/findpw.css}">
+		<!-- 구글 아이콘 -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{/js/findpw.js}"></script>
+</th:block>
+
+<body>
+	<div layout:fragment="content" class="findpw-content">
+
+		<div class="page-header">
+			<a href="/" class="material-symbols-outlined" style="font-size: 48px">
+				chevron_left
+			</a>
+		</div>
+
+		<div class="findpw-logo">
+			<h2>비밀번호 찾기</h2>
+			<br>
+			<p>임시 비밀번호가 발급됩니다</p>
+		</div>
+		<div class="findpw-container">
+			<form id="findpwForm" class="findpw-form">
+				<label class="findpw-label">아이디 입력</label>
+				<input type="text" id="userId" class="inputs" name="userid" placeholder="아이디를 입력해 주세요" required />
+				<label class="findpw-label">닉네임 입력</label>
+				<input type="text" id="userName" class="inputs" name="username" placeholder="닉네임을 입력해 주세요" required />
+
+				<button type="submit" class="btns">찾기</button>
+			</form>
+		</div>
+	</div>
+
+
+</body>
