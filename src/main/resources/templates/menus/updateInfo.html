@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+
+<head>
+	<title>정보 변경</title>
+</head>
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/user/user.css}">
+	<!-- 구글 아이콘 -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+</th:block>
+<th:block layout:fragment="script">
+	
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+	<script defer type="text/javascript" th:src="@{/js/updateInfo.js}"></script>
+
+
+</th:block>
+
+<div layout:fragment="content">
+	<h2>회원정보 수정!</h2>
+	<form id="updateInfoForm">
+
+		<label>이름</label>
+		<input type="text" id="inputUsername" required/>
+
+		<label>비밀번호</label>
+		<input type="password" id="inputPassword"/>
+
+		<label>비밀번호 확인</label>
+		<input type="password" id="inputPasswordChk"/>
+
+		<button type="submit" id="updateInfoBtn">수정</button>
+	</form>
+
+</div> 

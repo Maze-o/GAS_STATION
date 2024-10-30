@@ -6,20 +6,32 @@
 
 	<div layout:fragment="content" class="content">
 
-		<!-- 왼쪽 사이드바 오프캔버스 -->
+		<!-- 왼쪽 오프캔버스 버튼-->
 		<h4 class="offcanvas-btn">
 			<a class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
 				aria-controls="offcanvasScrolling">버튼</a>
 		</h4>
 
+		<!-- 왼쪽 오프캔버스 -->
 		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
 			id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+			<!-- 오프캔버스 헤더 -->
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasScrollingLabel">안녕하세요!!</h5>
+				<!-- 토큰 유무에 따라 메시지를 표시할 h2태그 -->
+				<h2 id="statusMessage"></h2>
+				<!-- 오프캔버스 닫기 버튼 -->
 				<button type="button" class="offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
 				</button>
 			</div>
+			<!-- 오프캔버스 메인 부분 -->
 			<div class="offcanvas-body">
+				
+			</div>
+
+			<!-- 오프캔버스 하단 -->
+			<div class="offcanvas-footer">
+
+				<a href="/checkpw" id="updateInfoBtn">회원정보 수정</a>
 
 			</div>
 		</div>
