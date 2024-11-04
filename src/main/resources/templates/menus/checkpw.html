@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
 
 <head>
-	<title>비밀번호 확인</title>
+    <title>비밀번호 확인</title>
 </head>
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" th:href="@{/css/user/user.css}">
-	<!-- 구글 아이콘 -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+    <link rel="stylesheet" th:href="@{/css/user/checkpw.css}">
+    <!-- 구글 아이콘 -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </th:block>
 <th:block layout:fragment="script">
-	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script defer type="text/javascript" th:src="@{/js/user.js}"></script> -->
     <script defer type="text/javascript" th:src="@{/js/checkpw.js}"></script>
 
 </th:block>
 
-<div layout:fragment="content">
-    <h2>회원 정보 수정을 위해 비밀번호를 입력해 주세요!</h2>
+<div layout:fragment="content" class="checkpw-content">
 
-    <form id="pwChkForm">
-        <label>비밀번호 입력</label>
-        <input type="text" id="userPw" name="userpw" required />
-        <button type="submit">확인</button>
-    </form>
+    <div class="page-header">
+        <a href="/" class="material-symbols-outlined top-prev-btn" style="font-size: 48px">
+            chevron_left
+        </a>
+    </div>
 
-    <a href="/">홈으로 돌아가기</a>
+    <div class="checkpw-container">
+
+        <h2 class="page-logo">회원 정보 수정을 위해 <br>
+            비밀번호를 입력해 주세요!</h2>
+
+        <form id="pwChkForm" class="checkpw-form">
+            <label class="checkpw-label">비밀번호 입력</label>
+            <input type="password" class="inputs" id="userPw" name="userpw" required />
+            <button type="submit" class="btn-disabled" id="pwChkBtn">확인</button>
+        </form>
+
+        <a href="/">홈으로 돌아가기</a>
+    </div>
 </div>

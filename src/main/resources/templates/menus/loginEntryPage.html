@@ -10,7 +10,7 @@
 	<link rel="stylesheet" th:href="@{/css/user/login.css}">
 	<!-- 구글 아이콘 -->
 	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </th:block>
 <th:block layout:fragment="script">
 </th:block>
@@ -19,7 +19,7 @@
 	<div layout:fragment="content" class="login-content">
 
 		<div class="page-header">
-			<a href="/login" class="material-symbols-outlined" style="font-size: 48px">
+			<a href="/login" class="material-symbols-outlined top-prev-btn" style="font-size: 48px">
 				chevron_left
 			</a>
 		</div>
@@ -31,11 +31,15 @@
 				<label class="login-label">아이디</label>
 				<input type="text" name="userid" class="login-input" placeholder="아이디를 입력해주세요." required />
 
-				<label class="login-label password-label">비밀번호</label>
-				<input type="password" name="userpw" class="login-input" placeholder="비밀번호를 입력해주세요." required />
+				<div class="password-block">
+					<label class="login-label password-label">비밀번호</label>
+					<input type="password" name="userpw" class="login-input" placeholder="비밀번호를 입력해주세요." required />
+					<span class="material-symbols-outlined eye-icon" id="togglePassword">
+						visibility
+				</div>
 
 				<div class="login-remember-block">
-					<input type="checkbox" id="login_session" class="login-checkbox">
+					<input type="checkbox" id="rememberMe" class="login-checkbox">
 					<label for="login_session">로그인 유지</label>
 				</div>
 				<button type="submit" class="login-submit-btn">로그인</button>

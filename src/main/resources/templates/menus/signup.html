@@ -10,7 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/user/signup.css">
 	<!-- 구글 아이콘 -->
 	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	
 </th:block>
 
 <th:block layout:fragment="script">
@@ -21,15 +22,15 @@
 <div layout:fragment="content" class="signup-content">
 
 	<div class="page-header">
-		<a href="/login" class="material-symbols-outlined" style="font-size: 48px">
+		<a href="/login" class="material-symbols-outlined top-prev-btn" style="font-size: 48px">
 			chevron_left
 		</a>
 	</div>
 
 	<div class="signup-container">
 
+		<h2 class="signup-page-logo">회원가입</h2>
 		<form id="signupForm" class="signup-form" th:action="@{/signup}" method="post">
-			<h2 class="signup-page-logo">회원가입</h2>
 
 			<label class="signup-label">아이디</label>
 			<input type="text" id="userId" name="userid" placeholder="아이디를 입력해주세요" required>

@@ -69,6 +69,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.project.gas.dto.User;
 import com.project.gas.jwt.JwtProvider;
 
 import jakarta.servlet.ServletException;
@@ -107,10 +108,16 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
             username = (String) attributes.get("name"); // Google의 name
         }
         
-
+        User user = new User();
+        user.setUsername(username);
+        user.setUserid(null);
+        
         // JWT 토큰 생성
-        String jwtToken = jwtProvider.generateToken(username);
-        addCookie(response, "JWT", jwtToken, false, 60 * 60); // JWT 쿠키 추가
+        String accessToken = jwtProvider.generateToken(user, 3600); // 1시간
+        String refreshToken = jwtProvider.generateRefreshToken(user, 604800); // 1주일
+        addCookie(response, "accessToken", accessToken, false, 60 * 60); // JWT 쿠키 추가
+        addCookie(response, "refreshToken", refreshToken, false, 60 * 60); // JWT 쿠키 추가
+        
         addCookie(response, "username", username, false, 60 * 60); // 사용자 이름 쿠키 추가
 
         response.setCharacterEncoding("UTF-8");

@@ -1,0 +1,94 @@
+/* 페이지 전체 */
+.checkpw-content {
+    /* display:flex;
+    flex-direction: column; */
+    height: 100vh;
+    position: relative;
+}
+
+
+/* 페이지 헤더 */
+.page-header {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #0000000d;
+}
+
+/* 구글 아이콘 */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+/* 이전 버튼 */
+.top-prev-btn {
+    position: absolute;
+    top: 17%;
+    left: 30%;
+
+}
+
+/* 페이지 컨테이너 */
+.checkpw-container {
+    display:flex;
+    /* height: 100%; */
+    width:400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.page-logo {
+    margin-top: 200px;
+}
+
+/* 폼태그 */
+.checkpw-form {
+    margin-top: 50px;
+    width:100%;
+    display:flex;
+
+    flex-direction: column;
+}
+
+.btns {
+    margin-bottom: 100px;
+    /* margin-top: 20px; */
+}
+
+/* 버튼 비활성화 상태 */
+.btn-disabled {
+    outline: none;
+
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    background-color: #F4F4F5;
+    color: rgba(55, 56, 60, 0.16);
+    border: none;
+    margin-top: 50px;
+}
+
+/* 버튼 활성화 상태 */
+.btn-active {
+    outline: none;
+    background-color: inherit;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 48px;
+    background-color: #0066ff;
+    ;
+    border: 1px solid;
+    color: #F4F4F5;
+    border: none;
+    margin-top: 50px;
+
+}

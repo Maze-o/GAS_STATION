@@ -13,5 +13,6 @@ public class LoginRequest {
 	private String userid;
     private String userpw;
     private String username;
+    private boolean rememberMe; // 로그인 유지 체크박스
 
 }
