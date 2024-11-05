@@ -35,10 +35,6 @@
 
 /* 회원가입 페이지 컨테이너 */
 .signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     width: 400px;
     margin: 0 auto;
     margin-top: 100px;

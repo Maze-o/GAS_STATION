@@ -65,6 +65,64 @@ p {
 	position: relative;
 }
 
+/* 아이콘 포함 페이지 헤더 */
+.page-header {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #0000000d;
+}
+
+/* 구글 아이콘 */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+/* 이전 버튼 */
+.top-prev-btn {
+    position: absolute;
+    top: 17%;
+    left: 30%;
+
+}
+
+/* 버튼 비활성화 상태 */
+.btn-disabled {
+    outline: none;
+
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    background-color: #F4F4F5;
+    color: rgba(55, 56, 60, 0.16);
+    border: none;
+    margin-top: 50px;
+}
+
+/* 버튼 활성화 상태 */
+.btn-active {
+    outline: none;
+    background-color: inherit;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 48px;
+    background-color: #0066ff;
+    ;
+    border: 1px solid;
+    color: #F4F4F5;
+    border: none;
+    margin-top: 50px;
+
+}
+
+
 /* 왼쪽 오프캔버스 버튼 */
 .offcanvas-btn {
 	position: absolute;

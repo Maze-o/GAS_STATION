@@ -7,32 +7,46 @@
 </head>
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" th:href="@{/css/user/user.css}">
+	<link rel="stylesheet" th:href="@{/css/user/updateinfo.css}">
+
 	<!-- 구글 아이콘 -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_left" />
 </th:block>
 <th:block layout:fragment="script">
-	
+
 	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 	<script defer type="text/javascript" th:src="@{/js/updateInfo.js}"></script>
 
 
 </th:block>
 
-<div layout:fragment="content">
-	<h2>회원정보 수정!</h2>
-	<form id="updateInfoForm">
+<div layout:fragment="content" class="updateinfo-page-content">
 
-		<label>이름</label>
-		<input type="text" id="inputUsername" required/>
+	<div class="page-header">
+		<a href="/login" class="material-symbols-outlined top-prev-btn" style="font-size: 48px">
+			chevron_left
+		</a>
+	</div>
 
-		<label>비밀번호</label>
-		<input type="password" id="inputPassword"/>
 
-		<label>비밀번호 확인</label>
-		<input type="password" id="inputPasswordChk"/>
+		<div class="updateinfo-container">
+			<h2 class="updateinfo-title">회원정보 수정!</h2>
 
-		<button type="submit" id="updateInfoBtn">수정</button>
-	</form>
+			<form id="updateInfoForm" class="updateinfo-form">
 
-</div> 
+				<label class="updateinfo-label">이름</label>
+				<input type="text" name="username"id="inputUsername" class="inputs" />
+
+				<label class="updateinfo-label">비밀번호</label>
+				<input type="password" id="inputPassword" class="inputs" />
+
+				<label class="updateinfo-label">비밀번호 확인</label>
+				<input type="password" id="inputPasswordChk" class="inputs" />
+
+				<button type="submit" id="updateInfoBtn" class="btn-disabled">수정</button>
+			</form>
+
+		</div>
+
+</div>

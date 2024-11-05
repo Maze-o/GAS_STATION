@@ -59,6 +59,7 @@ function updateSignupButtonState() {
 const kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글 포함 여부 체크
 const num = /[0-9]/; // 숫자 포함 여부 체크
 const eng = /[a-zA-Z]/; // 영문 포함 여부 체크
+const invalidCharacters = /[^a-zA-Z0-9가-힣]/; // 한글, 영문자, 숫자가 아닌 문자
 
 function validateField($field) { 
     const value = $field.val().trim();
@@ -116,9 +117,13 @@ function validateField($field) {
         },
         userName: {
             message: '이름은 3자리 ~ 10자리 이내로 입력해 주세요',
+            format: '이름은 한글, 영문자, 숫자만 사용할 수 있습니다.',
             test: () => {
                 if (value.length < 3 || value.length > 10) {
                     addErrorMessage($field, rules.userName.message);
+                    return false;
+                } if (invalidCharacters.test(value)) {
+                    addErrorMessage($field, rules.userName.format);
                     return false;
                 }
                 return true;

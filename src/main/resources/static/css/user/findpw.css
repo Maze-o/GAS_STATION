@@ -54,6 +54,32 @@
     margin-top: 30px;
 }
 
-.btns {
+/* 버튼 비활성화 상태 */
+.btn-disabled {
+    outline: none;
+
+    border-radius: 10px;
+    width: 100%;
+    height: 48px;
+    background-color: #F4F4F5;
+    color: rgba(55, 56, 60, 0.16);
+    border: none;
     margin-top: 50px;
+}
+
+/* 버튼 활성화 상태 */
+.btn-active {
+    outline: none;
+    background-color: inherit;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 48px;
+    background-color: #0066ff;
+    ;
+    border: 1px solid;
+    color: #F4F4F5;
+    border: none;
+    margin-top: 50px;
+
 }

@@ -200,7 +200,8 @@ public class UserService {
 
 		String username = updateRequest.getUsername();
 		String userpw = updateRequest.getUserpw();
-
+		System.out.println("username: " + username);
+		System.out.println("userpw: " + userpw);
 		// 둘 다 null인 경우 예외 처리 (javascript 비활성화 대비)
 		if (username == null && userpw == null) {
 			throw new IllegalArgumentException("최소 하나의 정보는 변경해야 합니다.");

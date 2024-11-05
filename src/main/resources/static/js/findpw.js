@@ -1,4 +1,19 @@
 
+// 버튼 상태 업데이트를 위한 함수
+$(document).ready(function () {
+	$('#userId, #userName').on('input', function () {
+		const inputIdVal = $('#userId').val();
+        const inputNameVal = $('#userName').val();
+
+		// 입력 칸이 비어있다면
+		if (inputIdVal.trim() !== "" && inputNameVal.trim() !== "") {
+			$('#findPwBtn').removeClass('btn-disabled').addClass('btn-active').removeAttr('disabled');
+		} else {
+			$('#findPwBtn').addClass('btn-disabled').removeClass('btn-active').attr('disabled', true);
+		}
+
+	})
+})
 
 $('#findpwForm').on('submit', function(event) {
 	console.log('js submit 발동');
