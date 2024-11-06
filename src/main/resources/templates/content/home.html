@@ -25,7 +25,7 @@
 			</div>
 			<!-- 오프캔버스 메인 부분 -->
 			<div class="offcanvas-body">
-				
+
 			</div>
 
 			<!-- 오프캔버스 하단 -->
@@ -38,13 +38,27 @@
 
 		<!-- 로그인, 회원가입 버튼 -->
 		<h2 class="sign-btn">
-			<a href="/login" id="loginBtn"  class="btn btn-light">로그인</a>
+			<a href="/login" id="loginBtn" class="btn btn-light">로그인</a>
 			<button id="logOutBtn" class="btn btn-light">로그아웃</button>
 			<a href="/signup" id="signinBtn" class="btn btn-light">회원가입</a>
 		</h2>
 
+
+		<div id="container">
+			<div id="rvWrapper">
+				<div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+				<div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
+			</div>
+			<div id="mapWrapper">
+				<div id="map" style="width:100%;height:100%"></div> <!-- 지도를 표시할 div 입니다 -->
+				
+				<div id="roadviewControl" onclick="setRoadviewRoad()"></div>
+			</div>
+		</div>
+
 		<!-- 메인 지도 -->
-		<div class="map-container">
+		<!-- 로드뷰를 표시할 div 입니다 -->
+		<!-- <div class="map-container">
 
 			<div id="map-wrapper">
 				<div id="map" class="main-map"></div>
@@ -52,7 +66,7 @@
 			</div>
 
 			<div id="rvWrapper">
-				<div id="roadview"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+				<div id="roadview"></div> 
 				<div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
 			</div>
 			<ul id="category" class="category-btn">
@@ -81,7 +95,7 @@
 					편의점
 				</li>
 			</ul>
-		</div>
+		</div> -->
 
 
 		<!-- 외부파일로 지도 js 관리 -->
@@ -89,9 +103,9 @@
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9decf967a5d3e1252636891fb7f05a98&libraries=services">
 			</script>
 		<script src="/js/map.js"></script>
-		
+
 	</div>
-		
+
 </body>
 
 </html>

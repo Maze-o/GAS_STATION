@@ -42,19 +42,19 @@ p {
 	width: 100%;
 	height: 48px;
 	background-color: #F4F4F5;
-    color: rgba(55, 56, 60, 0.16);
-    border:none;
-    margin-top: 50px;
+	color: rgba(55, 56, 60, 0.16);
+	border: none;
+	margin-top: 50px;
 }
 
 /* 인풋 스타일링 */
 .inputs {
 	border: 1px solid rgba(112, 115, 124, 0.22);
-    border-radius: 10px;
-    height: 48px;
-    width: 100%;
-    padding: 0 20px;
-    margin-top: 10px;
+	border-radius: 10px;
+	height: 48px;
+	width: 100%;
+	padding: 0 20px;
+	margin-top: 10px;
 }
 
 /* 전체 content */
@@ -67,58 +67,58 @@ p {
 
 /* 아이콘 포함 페이지 헤더 */
 .page-header {
-    position: absolute;
-    top: 0;
+	position: absolute;
+	top: 0;
 
-    width: 100%;
-    height: 70px;
-    border-bottom: 1px solid #0000000d;
+	width: 100%;
+	height: 70px;
+	border-bottom: 1px solid #0000000d;
 }
 
 /* 구글 아이콘 */
 .material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 48
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 48
 }
 
 /* 이전 버튼 */
 .top-prev-btn {
-    position: absolute;
-    top: 17%;
-    left: 30%;
+	position: absolute;
+	top: 17%;
+	left: 30%;
 
 }
 
 /* 버튼 비활성화 상태 */
 .btn-disabled {
-    outline: none;
+	outline: none;
 
-    border-radius: 10px;
-    width: 100%;
-    height: 48px;
-    background-color: #F4F4F5;
-    color: rgba(55, 56, 60, 0.16);
-    border: none;
-    margin-top: 50px;
+	border-radius: 10px;
+	width: 100%;
+	height: 48px;
+	background-color: #F4F4F5;
+	color: rgba(55, 56, 60, 0.16);
+	border: none;
+	margin-top: 50px;
 }
 
 /* 버튼 활성화 상태 */
 .btn-active {
-    outline: none;
-    background-color: inherit;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100%;
-    height: 48px;
-    background-color: #0066ff;
-    ;
-    border: 1px solid;
-    color: #F4F4F5;
-    border: none;
-    margin-top: 50px;
+	outline: none;
+	background-color: inherit;
+	border-radius: 10px;
+	cursor: pointer;
+	width: 100%;
+	height: 48px;
+	background-color: #0066ff;
+	;
+	border: 1px solid;
+	color: #F4F4F5;
+	border: none;
+	margin-top: 50px;
 
 }
 
@@ -171,34 +171,36 @@ p {
 	display: block;
 }
 
+/* 지도 */
+#container {
+	overflow: hidden;
+	height: 100vh;
+	position: relative;
+}
 
-/* 로드뷰 */
-
+#mapWrapper {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
 
 #rvWrapper {
 	width: 50%;
-	height:100vh;
+	height: 100%;
 	top: 0;
 	right: 0;
 	position: absolute;
-	z-index: 1;
-	visibility: hidden;
-}
-#roadview {
-	width:100%;
-	height:100%;
+	z-index: 0;
 }
 
-
-
-.map-container.view_roadview #map-wrapper {
+#container.view_roadview #mapWrapper {
 	width: 50%;
 }
 
 #roadviewControl {
 	position: absolute;
+	right: 30%;
 	top: 15px;
-	right: 300px;
 	width: 42px;
 	height: 42px;
 	z-index: 1;
@@ -220,7 +222,6 @@ p {
 	border-radius: 4px;
 	border: 1px solid #c8c8c8;
 	box-shadow: 0px 1px #888;
-	z-index: 1;
 }
 
 #close .img {
@@ -228,156 +229,4 @@ p {
 	background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;
 	width: 14px;
 	height: 14px;
-}
-
-
-
-/* 지도 전체 컨테이너 */
-.view_roadview {
-	overflow: hidden;
-	height:100vh;
-	position: relative; 
-	/* z-index: 1; */
-}
-
-
-.map-container {
-	overflow: hidden;
-	height:100vh;
-	position: relative;
-}
-
-/* 지도가 나오는 div */
-#map-wrapper {
-	width:100%;
-	/* height:100vh; */
-	height:100%;
-	z-index: 1;
-
-}
-
-/* 메인지도 */
-.main-map {
-	width: 100%;
-	height: 100%;
-}
-
-/* 카테고리 아이콘 */
-.category-btn {
-	display: flex;
-	position: absolute;
-	top: 15px;
-	left: 100px;
-	z-index: 10;
-	height: 40px;
-}
-
-.category-btn li {
-	gap: 10px;
-	padding: 0 10px;
-	height: 40px;
-	line-height: 40px;
-	background-color: white;
-	text-align: center;
-
-}
-
-/* .category-btn li:nth-child(1) {
-	border-radius: 25% 0 0 25%;
-} */
-
-.category-btn li:first-child {
-	border-radius: 25% 0 0 25%;
-}
-
-.category-btn li:last-child {
-	border-radius: 0 25% 25% 0;
-}
-
-.category-btn li:hover {
-
-	background: #C9D6FF;
-	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #E2E2E2, #C9D6FF);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-	cursor: pointer;
-}
-
-/* 주유소 아이콘 클릭 시 나오는 정보창 디자인 */
-.placeinfo_wrap {
-	position: absolute;
-	bottom: 28px;
-	left: -150px;
-	width: 300px;
-}
-
-.placeinfo {
-	position: relative;
-	width: 100%;
-	border-radius: 6px;
-	border: 1px solid #ccc;
-	border-bottom: 2px solid #ddd;
-	padding-bottom: 10px;
-	background: #fff;
-}
-
-.placeinfo:nth-of-type(n) {
-	border: 0;
-	box-shadow: 0px 1px 2px #888;
-}
-
-.placeinfo_wrap .after {
-	content: '';
-	position: relative;
-	margin-left: -12px;
-	left: 50%;
-	width: 22px;
-	height: 12px;
-	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-}
-
-.placeinfo a,
-.placeinfo a:hover,
-.placeinfo a:active {
-	color: #fff;
-	text-decoration: none;
-}
-
-.placeinfo a,
-.placeinfo span {
-	display: block;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.placeinfo span {
-	margin: 5px 5px 0 5px;
-	cursor: default;
-	font-size: 13px;
-}
-
-.placeinfo .title {
-	font-weight: bold;
-	font-size: 14px;
-	border-radius: 6px 6px 0 0;
-	margin: -1px -1px 0 -1px;
-	padding: 10px;
-	color: #fff;
-	background: #C9D6FF url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
-}
-
-.placeinfo .tel {
-	color: #0f7833;
-}
-
-.placeinfo .jibun {
-	color: #999;
-	font-size: 11px;
-	margin-top: 0;
 }
