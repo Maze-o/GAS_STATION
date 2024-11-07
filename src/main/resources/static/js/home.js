@@ -22,6 +22,7 @@ infoSearchBtn.on('click', function () {
     $('#infoMy').addClass('HIDDEN').removeClass('ACTIVE');
 })
 
+
 // 길찾기 버튼
 infoDirectionBtn.on('click', function () {
     $('#infoSearch').addClass('HIDDEN').removeClass('ACTIVE');
