@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, String>> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
         Map<String, String> errorResponse = new HashMap<>();
-        System.out.println("IllegalArgumentException 발생: " + ex.getMessage()); // 로그 추가
         errorResponse.put("errorCode", "400");
         errorResponse.put("errorMessage", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);

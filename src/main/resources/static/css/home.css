@@ -1,0 +1,84 @@
+/* 오프캔버스 헤더 */
+.offcanvas-header {
+    width: 100%;
+    height: 120px;
+    border: 1px solid;
+    display: block !important;
+}
+
+/* 검색 박스 */
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-top: 50px;
+}
+
+/* 검색 인풋 */
+.search-input {
+    position: absolute;
+    height: 40px;
+    margin: 0 auto;
+
+    border: 1px solid rgba(112, 115, 124, 0.22);
+    border-radius: 10px;
+
+    width: 100%;
+    padding: 0 20px;
+
+}
+
+/* 검색 버튼 */
+.search-btn {
+    position: absolute;
+    right: 10px;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    background-color: white;
+    margin: 0 auto;
+    top: 8px;
+}
+
+
+/* 오프캔버스 메인 */
+.offcanvas-body {
+
+    border: 1px solid;
+}
+
+/* 메인부분 메뉴 */
+.offcanvas-body__info-header {
+    width: 80%;
+
+}
+
+.offcanvas-body__menus {
+    display: flex;
+
+    padding: 20px;
+}
+
+.offcanvas-body__menus li a {
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+
+/* 메인부분 스크롤 */
+.offcanvas-body__info-body {
+    overflow-y: auto;
+}
+
+
+.info-search {
+    display:block;
+}
+
+.info-direction {
+    display:none;
+}
+
+.info-my {
+    display:none;
+}

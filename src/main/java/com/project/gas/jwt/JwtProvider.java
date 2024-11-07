@@ -19,9 +19,6 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtProvider {
 
-//	private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256); // 비밀 키 생성
-//	private static final long EXPIRATION_TIME = 1000 * 60 * 5; // 10분 유효
-//	private static final long REFRESH_TOKEN_EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 7; // 7일 유효
 	private final Key key;
 
 	public JwtProvider(@Value("${jwt.secret}") String secretKey) {
@@ -36,7 +33,7 @@ public class JwtProvider {
 		Date expiryDate = new Date(System.currentTimeMillis() + expiryDurationInMillis);
 
 		return Jwts.builder()
-				.setSubject(user.getUserid()) // 사용자 이름 설정
+				.setSubject(user.getUserid())
 				.claim("username", user.getUsername())
 				.setIssuedAt(now) // 발급 시간 설정
 				.setExpiration(expiryDate) // 만료 시간 설정
@@ -51,8 +48,8 @@ public class JwtProvider {
 		Date expiryDate = new Date(System.currentTimeMillis() + expiryDurationInMillis);
 
 		return Jwts.builder()
-				.setSubject(user.getUserid())
 				.claim("username", user.getUsername())
+				.claim("isLogined", "true")
 				.setIssuedAt(now)
 				.setExpiration(expiryDate)
 				.signWith(key)
@@ -61,7 +58,6 @@ public class JwtProvider {
 
 	// 토큰에서 사용자 이름 추출
 	public String extractUsername(String token) {
-		System.out.println("토큰 사용자 이름 추출 : " + extractClaims(token).getSubject());
 		return extractClaims(token).getSubject(); // Claims에서 사용자 이름 반환
 	}
 

@@ -51,10 +51,6 @@ public class UserService {
 		return userRepo.existsByUsername(username);
 	}
 
-	// 유저 아이디로 사용자 찾기
-//	private Optional<User> findUserByUsername(String username) {
-//		return userRepo.findByuserid(username);
-//	}
 
 	// 회원가입 서비스 처리
 	public User signup(JoinRequest joinRequest) {
@@ -104,12 +100,12 @@ public class UserService {
 		String refreshToken = null;
 		if (loginRequest.isRememberMe()) {
 			// 로그인 유지 체크박스를 선택한 경우
-			accessToken = jwtProvider.generateToken(user, 3600); // 1시간
+			accessToken = jwtProvider.generateToken(user, 1800); // 30분 
 			refreshToken = jwtProvider.generateRefreshToken(user, 604800); // 1주일
 		} else {
 			// 로그인 유지 체크박스를 선택하지 않은 경우
-			accessToken = jwtProvider.generateToken(user, 3600); // 1시간
-			refreshToken = jwtProvider.generateRefreshToken(user, 3600); // 1시간
+			accessToken = jwtProvider.generateToken(user, 1800); // 30분
+			refreshToken = jwtProvider.generateRefreshToken(user, 1800); // 30분
 		}
 
 		Map<String, String> response = new HashMap<>();

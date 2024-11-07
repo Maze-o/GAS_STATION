@@ -17,7 +17,7 @@ $(document).ready(function() {
 		// refreshToken 만료 확인
 		if (decodeToken.exp < currentTime) {
 			// refreshToken이 만료된 경우	
-			alert('세션이 만료되었습니다. 로그아웃 되었습니다.');
+			alert('로그인 정보가 만료되었습니다. 로그아웃 되었습니다.');
 			// 로컬 스토리지에서 토큰 삭제
 			localStorage.removeItem('accessToken');
 			localStorage.removeItem('refreshToken');
@@ -33,9 +33,9 @@ $(document).ready(function() {
 		$('#statusMessage').text(`안녕하세요 ${decodeToken.username}님!`);
 		// 회원정보수정 버튼 표시
 		$('#inputNameValue').val(decodeToken.username);
-
+		console.log('decodetoken : ', decodeToken);
 		// 일반 로그인이면 회원정보수정 버튼 표시
-		if (decodeToken.sub) {
+		if (decodeToken.isLogined) {
 			$('#updateInfoBtn').show();
 		}
 

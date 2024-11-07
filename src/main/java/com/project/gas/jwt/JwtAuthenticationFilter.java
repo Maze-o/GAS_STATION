@@ -43,9 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		// OAuth2 인증 요청은 필터를 통과
 		if (request.getRequestURI().contains("/oauth2/authorization/")
 				|| request.getRequestURI().contains("/login/oauth2/code/")) {
-//			System.out.println("헤더 정보 : " + request.getHeader("Authorization"));
-//			System.out.println("OAUTH2 요청 처리중 (jwtFilter)");
-//			System.out.println("현재 SecurityContext에 인증 정보: " + SecurityContextHolder.getContext().getAuthentication());
+
 			chain.doFilter(request, response);
 			return; // OAuth2 인증 요청은 필터를 통과시킴
 		}

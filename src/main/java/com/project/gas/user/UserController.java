@@ -102,7 +102,6 @@ public class UserController {
 		try {
 			// service에서 로그인 처리
 			Map<String, String> response = userService.signin(loginRequest);
-			System.out.println("token  : " + response);
 			return ResponseEntity.ok(response); // JWT를 사용자닉네임 포함 JSON 응답으로 반환
 		} catch (IllegalArgumentException | UsernameNotFoundException | BadCredentialsException e) {
 			System.out.println("실패 : " + e.getMessage());
@@ -111,11 +110,6 @@ public class UserController {
 		}
 	}
 
-//	@GetMapping("logout")
-//	public String signout(HttpSession session) {
-//		session.removeAttribute("user");
-//		return "redirect:/";
-//	}
 
 	@GetMapping("/signup")
 	public String signup() {
@@ -143,10 +137,8 @@ public class UserController {
 	public ResponseEntity<Map<String, String>> recoverPassword(@RequestBody FindPwRequest findPwRequest) {
 		try {
 			String password = userService.findPw(findPwRequest); // 유저 비밀번호 찾기 (암호화 전의 비밀번호를 받아옴)
-			System.out.println("성공" + password);
 			return ResponseEntity.ok(Map.of("userpw", password)); // 암호화 하기 전의 비밀번호를 프론트로 전달
 		} catch (Exception e) {
-			System.out.println("에러 발생" + e.getMessage());
 			return ResponseEntity.badRequest().body(Map.of("message", e.getMessage())); // 에러 발생시 프론트로 전달
 		}
 
@@ -166,10 +158,10 @@ public class UserController {
 	public ResponseEntity<Map<String, Object>> checkpw(@RequestBody User userpw) {
 		// DB에 저장된 패스워드 가져오기
 		String pw = userpw.getUserpw();
-		System.out.println("USERPW : " + pw);
+		
 		// 유저 정보 확인하고 있으면 가져옴
 		Optional<User> user = userService.getCurrentUser();
-		System.out.println("userContoller user : " + user);
+		
 		// 비밀번호 확인 결과를 리턴해줘야 하기 때문에 map 사용
 		Map<String, Object> map = new HashMap<>();
 
@@ -203,7 +195,6 @@ public class UserController {
 		// 토큰에서 username 추출
 		String jwtToken = token.replace("Bearer ", "");
 		String username = jwtProvider.extractUsername(jwtToken);
-		System.out.println("username : " + username);
 
 		userService.updateUser(username, updateRequest);
 
