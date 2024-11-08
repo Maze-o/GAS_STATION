@@ -39,3 +39,27 @@ infoMyBtn.on('click', function () {
 
 
 
+
+function dircetion() {
+    
+    $.ajax({
+        url : 'https://apis-navi.kakaomobility.com/v1/directions?origin=127.11015314141542,37.39472714688412&destination=127.10824367964793,37.401937080111644&waypoints=&priority=RECOMMEND&car_fuel=GASOLINE&car_hipass=false&alternatives=false&road_details=false',
+        contentType: 'application/json',
+        headers : {
+            'Authorization': 'KakaoAK${9decf967a5d3e1252636891fb7f05a98}'
+        }, 
+        type : 'GET',
+        success : function (data) {
+            alert('success' + data);
+        }, 
+        error : function (xhr) {
+            alert('실패 !' + xhr)
+            console.log(xhr);
+        }
+
+    })
+
+
+
+
+}

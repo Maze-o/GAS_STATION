@@ -32,6 +32,12 @@
 				<!-- 오프캔버스 닫기 버튼 -->
 				<button type="button" id="offcanvasOffBtn" class="offcanvas-close-btn" data-bs-dismiss="offcanvas"
 					aria-label="Close"></button>
+
+				<header class="offcanvas-header__title">
+					<a href="/">로고!</a>
+				</header>
+
+				<!-- 검색 박스 -->
 				<div class="search-box">
 					<input type="text" class="search-input " id="searchInput" placeholder="장소, 주소 검색" />
 
@@ -58,11 +64,14 @@
 				<div class="offcanvas-body__info-body p-4">
 
 					<div class="info-search" id="infoSearch">
-						검색 본문
+						검색 본문	
 					</div>
 
 					<div class="info-direction HIDDEN" id="infoDirection">
-						길찾기 본문
+						<div>
+							<input type="text" name="origin" id="dirOrigin" value=""/>
+							<button style="height: 100px;"onclick="dircetion()">길찾기</button>
+						</div>
 					</div>
 
 					<div class="info-my HIDDEN" id="infoMy">

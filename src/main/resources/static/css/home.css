@@ -6,12 +6,17 @@
     display: block !important;
 }
 
+/* 오프캔버스 타이틀 */
+.offcanvas-header__title {
+    height: 10px;
+}
+
 /* 검색 박스 */
 .search-box {
     position: relative;
     width: 100%;
     height: 50px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 /* 검색 인풋 */
