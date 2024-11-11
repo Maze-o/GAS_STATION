@@ -9,10 +9,10 @@ version = '0.0.1-SNAPSHOT'
 
 sourceCompatibility = '17'
 targetCompatibility = '17'
-
+    
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)        
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -52,3 +52,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
+
+
+
+
+
+
