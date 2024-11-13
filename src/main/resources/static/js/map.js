@@ -36,25 +36,34 @@ let infoWindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
 // 마커 이미지를 생성합니다
 let markImage = new kakao.maps.MarkerImage(
-		'https://t1.daumcdn.net/localimg/localimages/07/2018/pc/roadview_minimap_wk_2018.png',
-		new kakao.maps.Size(26, 46),
-		{
-			// 스프라이트 이미지를 사용합니다.
-			// 스프라이트 이미지 전체의 크기를 지정하고
-			spriteSize: new kakao.maps.Size(1666, 168),
-			// 사용하고 싶은 영역의 좌상단 좌표를 입력합니다.
-			// background-position으로 지정하는 값이며 부호는 반대입니다.
-			spriteOrigin: new kakao.maps.Point(705, 114),
-			offset: new kakao.maps.Point(13, 46)
-		}
-	);
+	'https://t1.daumcdn.net/localimg/localimages/07/2018/pc/roadview_minimap_wk_2018.png',
+	new kakao.maps.Size(26, 46),
+	{
+		// 스프라이트 이미지를 사용합니다.
+		// 스프라이트 이미지 전체의 크기를 지정하고
+		spriteSize: new kakao.maps.Size(1666, 168),
+		// 사용하고 싶은 영역의 좌상단 좌표를 입력합니다.
+		// background-position으로 지정하는 값이며 부호는 반대입니다.
+		spriteOrigin: new kakao.maps.Point(705, 114),
+		offset: new kakao.maps.Point(13, 46)
+	}
+);
 
 // 드래그가 가능한 마커를 생성합니다
 let marker = new kakao.maps.Marker({
-	image: markImage,
 	position: mapCenter,
 	draggable: true
 });
+
+// 마커 전용 아이콘
+var markerIcon = new kakao.maps.MarkerImage(
+	'https://i1.daumcdn.net/dmaps/apis/n_local_blit_04.png',
+	new kakao.maps.Size(31, 35),
+	{
+		shape: 'poly',
+		coords: '16,0,20,2,24,6,26,10,26,16,23,22,17,25,14,35,13,35,9,25,6,24,2,20,0,16,0,10,2,6,6,2,10,0'
+	});
+
 
 // 사용자 위치를 가져와 지도와 로드뷰 중심 설정하기
 function initMap() {
@@ -80,6 +89,7 @@ function initMap() {
 			// 마커 위치 설정
 			marker.setPosition(userLocation);
 			marker.setMap(map);
+
 			// 위치 정보 표시
 			displayLocationInfo(userLocation);
 
@@ -239,7 +249,9 @@ function toggleOverlay(active) {
 		// 지도 위에 로드뷰 도로 오버레이를 추가합니다
 		map.addOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
 
-
+		// 마커의 이미지를 변경
+		marker.setImage(markImage);
+		
 
 		// 마커의 위치를 지도 중심으로 설정합니다 
 		marker.setPosition(map.getCenter());
@@ -253,7 +265,8 @@ function toggleOverlay(active) {
 		map.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
 
 		// 지도 위의 마커를 제거합니다
-		marker.setMap(null);
+		// marker.setMap(null);
+		marker.setImage(markerIcon);
 	}
 
 	// 지도 위에 마커를 표시합니다

@@ -208,6 +208,7 @@ body {
 .zoom-control {
   position: relative;
   top: 15%;
+  left: 3px;
   margin: 0 auto;
   z-index: 10;
 }
