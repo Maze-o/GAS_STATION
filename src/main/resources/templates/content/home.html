@@ -39,11 +39,31 @@
 
 				<!-- 검색 박스 -->
 				<div class="search-box">
-					<input type="text" class="search-input " id="searchInput" placeholder="장소, 주소 검색" />
-
+					<!-- <input type="text" class="search-input " id="searchInput" placeholder="장소, 주소 검색" />
+					
 					<span class="material-symbols-outlined search-btn">
 						search
-					</span>
+					</span> -->
+
+					<div id="menu_wrap" class="bg_white">
+						<div class="option">
+								<!-- <form onsubmit="searchPlaces(); return false;">
+									
+					
+									<input type="text" id="keyword" value="" class="search-input" placeholder="장소, 주소 검색"> 
+									<button type="submit" onclick="searchPlaces()" class="btns">검색하기</button> 
+									 <button type="submit" class="material-symbols-outlined search-btn">
+										search
+									</button> -->	
+								<!-- </form> -->
+								<form onclick="placeSearchPlaces(); return false;">
+									키워드 : <input type="text" value="지하철" id="keyword" size="15"> 
+									<button type="submit">검색하기</button> 
+								</form>
+
+						</div>
+						
+					</div>
 				</div>
 
 
@@ -64,7 +84,10 @@
 				<div class="offcanvas-body__info-body p-4">
 
 					<div class="info-search" id="infoSearch">
-						검색 본문
+						<h3>검색 본문</h3>
+						<hr>
+						<ul id="placesList"></ul>
+						<div id="pagination"></div>
 					</div>
 
 					<div class="info-direction HIDDEN" id="infoDirection">

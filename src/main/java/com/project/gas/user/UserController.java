@@ -110,8 +110,8 @@ public class UserController {
 		}
 	}
 
-
 	@GetMapping("/signup")
+	
 	public String signup() {
 		return "menus/signup";
 	}

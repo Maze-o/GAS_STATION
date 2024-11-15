@@ -189,7 +189,6 @@ public class UserService {
 	}
 
 	// 사용자 정보 업데이트 (dirty checking이기 때문에 save함수 호출 필요 없다)
-	@Transactional
 	public void updateUser(String userid, UpdateUserRequest updateRequest) {
 		// 사용자 정보 가져오기
 		User user = userRepo.findByuserid(userid).orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다"));
