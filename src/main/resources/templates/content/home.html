@@ -56,9 +56,9 @@
 										search
 									</button> -->	
 								<!-- </form> -->
-								<form onclick="placeSearchPlaces(); return false;">
-									키워드 : <input type="text" value="지하철" id="keyword" size="15"> 
-									<button type="submit">검색하기</button> 
+								<form id="placeSearchPlacesForm">
+									<input type="text" id="keyword" size="15" class="search-input" placeholder="장소, 주소 검색"> 
+									<button onclick="placeSearchPlaces(); return false;"  class="material-symbols-outlined search-btn">search</button> 
 								</form>
 
 						</div>
@@ -83,9 +83,7 @@
 
 				<div class="offcanvas-body__info-body p-4">
 
-					<div class="info-search" id="infoSearch">
-						<h3>검색 본문</h3>
-						<hr>
+					<div class="info-search" id="infoSearch">					
 						<ul id="placesList"></ul>
 						<div id="pagination"></div>
 					</div>

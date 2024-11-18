@@ -109,6 +109,7 @@ function handleUpdateInfo() {
             alert('회원 정보 수정 성공!');
             location.href = "/"; // 메인 페이지로 리다이렉트
         },
+        
         error: function (xhr) {
             alert('회원 정보 수정 실패: ' + xhr.responseText); // 에러 처리
         }
