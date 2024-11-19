@@ -78,7 +78,7 @@ function placeSearchPlaces() {
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearch(data, status, pagination) {
-	console.log(pagination);
+
 	if (status === kakao.maps.services.Status.OK) {
 		// 정상적으로 검색이 완료됐으면
 		// 검색 목록과 마커를 표출합니다
@@ -107,8 +107,11 @@ function placesSearch(data, status, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function searchDisplayPlaces(places) {
+	// 목록을 표시 할 때 메인 내용 감추고 검색 결과만 표시
+	$('#infoMain').addClass('HIDDEN').removeClass('ACTIVE');
+	$('#infoSearch').addClass('ACTIVE').removeClass('HIDDEN');
 
-	console.log('place : ', places);
+
 	var listEl = document.getElementById('placesList'),
 		menuEl = document.getElementById('menu_wrap'),
 		fragment = document.createDocumentFragment(),
@@ -127,7 +130,6 @@ function searchDisplayPlaces(places) {
 			{name: places[i].place_name, x: places[i].x, y: places[i].y},
 
 		]
-		console.log('x, y object : ', xyCoordinate);
 		// 마커를 생성하고 지도에 표시합니다
 		var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 			marker = addMarker(placePosition, i),
@@ -140,7 +142,7 @@ function searchDisplayPlaces(places) {
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
 		(function (marker, title) {
-			console.log(title);
+
 			kakao.maps.event.addListener(marker, 'mouseover', function () {
 				displayInfowindow(marker, title);
 			});
@@ -150,14 +152,11 @@ function searchDisplayPlaces(places) {
 			});
 
 			itemEl.onclick = function () {
-				console.log('dd : ', places)
 				// 클릭한 위치의 좌표 찾기
 				var value = places.find(o => o.place_name === title);
-				console.log('value : ', value);
-				console.log('value.x : ', value.x);
-				console.log('value.y : ', value.y);
+
 				// 클릭한 위치의 좌표를 맵 중앙으로 설정
-				var placeCenter = new kakao.maps.LatLng(value.x, value.y);
+				var placeCenter = new kakao.maps.LatLng(value.y, value.x);
 				map.setCenter(placeCenter);
 				map.setLevel(4);
 				displayInfowindow(marker, title);
@@ -177,6 +176,17 @@ function searchDisplayPlaces(places) {
 
 	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 	map.setBounds(bounds);
+
+	// 닫기 버튼 클릭 시 메인 메뉴 표시
+	$('#searchCloseBtn').on('click', function() {
+		removeSearchElement();
+	})
+}
+
+function removeSearchElement() {
+	$('#infoMain').addClass('ACTIVE').removeClass('HIDDEN');
+	$('#infoSearch').addClass('HIDDEN').removeClass('ACTIVE');
+	
 }
 
 function addMarker(position, idx, title) {
@@ -225,10 +235,14 @@ function getListItem(index, places) {
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
-	console.log('pagination : ', pagination)
+
 	var paginationEl = document.getElementById('pagination'),
 		fragment = document.createDocumentFragment(),
 		i;
+	
+	// 상단으로 이동 버튼
+	let paginationToTop = $('#paginationToTop');
+	paginationToTop.addClass('ACTIVE').removeClass('HIDDEN');
 
 	// 기존에 추가된 페이지번호를 삭제합니다
 	while (paginationEl.hasChildNodes()) {
@@ -252,7 +266,14 @@ function displayPagination(pagination) {
 
 		fragment.appendChild(el);
 	}
+
+	// 상단 이동!
+	paginationToTop.on('click', function() {
+		$('.offcanvas-body__info-body').scrollTop(0);
+	})
+
 	paginationEl.appendChild(fragment);
+
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다

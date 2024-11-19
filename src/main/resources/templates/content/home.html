@@ -39,58 +39,83 @@
 
 				<!-- 검색 박스 -->
 				<div class="search-box">
-					<!-- <input type="text" class="search-input " id="searchInput" placeholder="장소, 주소 검색" />
-					
-					<span class="material-symbols-outlined search-btn">
-						search
-					</span> -->
-
 					<div id="menu_wrap" class="bg_white">
 						<div class="option">
-								<!-- <form onsubmit="searchPlaces(); return false;">
-									
-					
-									<input type="text" id="keyword" value="" class="search-input" placeholder="장소, 주소 검색"> 
-									<button type="submit" onclick="searchPlaces()" class="btns">검색하기</button> 
-									 <button type="submit" class="material-symbols-outlined search-btn">
-										search
-									</button> -->	
-								<!-- </form> -->
-								<form id="placeSearchPlacesForm">
-									<input type="text" id="keyword" size="15" class="search-input" placeholder="장소, 주소 검색"> 
-									<button onclick="placeSearchPlaces(); return false;"  class="material-symbols-outlined search-btn">search</button> 
-								</form>
-
+							<form id="placeSearchPlacesForm">
+								<input type="text" id="keyword" size="15" class="search-input" placeholder="장소, 주소 검색">
+								<button onclick="placeSearchPlaces(); return false;"
+									class="material-symbols-outlined search-btn">search</button>
+							</form>
 						</div>
-						
 					</div>
 				</div>
 
-
 			</div>
+
 			<!-- 오프캔버스 메인 부분 -->
 			<div class="offcanvas-body p-0">
 
 				<div class="offcanvas-body__info-header">
 					<ul class="offcanvas-body__menus">
-						<li><a  id="infoSearchBtn">검색</a></li>
-						<li><a  id="infoDirectionBtn">길찾기</a></li>
-						<li><a  id="infoMyBtn">나의 메뉴</a></li>
+						<li><a id="infoSearchBtn">검색</a></li>
+						<li><a id="infoDirectionBtn">길찾기</a></li>
+						<li><a id="infoMyBtn">나의 메뉴</a></li>
 					</ul>
 
 				</div>
 
 
-				<div class="offcanvas-body__info-body p-4">
+				<div class="offcanvas-body__info-body">
 
-					<div class="info-search" id="infoSearch">					
+					<div class="info-main ACTIVE" id="infoMain">
+						<h3 class="category-title">주변 탐색</h3>
+						<ul id="category">
+							<li id="BK9" data-order="0"> 
+								<span class="category_bg bank"></span>
+								<span>은행</span>
+							</li>       
+							<li id="MT1" data-order="1"> 
+								<span class="category_bg mart"></span>
+								<span>마트</span>
+							</li>  
+							<li id="PM9" data-order="2"> 
+								<span class="pharmacy material-symbols-outlined">
+									medication
+								</span>
+								<span>약국</span>
+							</li>  
+							<li id="OL7" data-order="3"> 
+								<span class="oil material-symbols-outlined">
+									local_gas_station
+								</span>
+								<span>주유소</span>
+							</li>  
+							<li id="CE7" data-order="4"> 
+								<span class="category_bg cafe"></span>
+								<span>카페</span>
+							</li>  
+							<li id="CS2" data-order="5"> 
+								<span class="category_bg store"></span>
+								<span>편의점</span>
+							</li>      
+						</ul>
+
+					</div>
+
+					<div class="info-search HIDDEN" id="infoSearch">
+						<span class="material-symbols-outlined close-btn" id="searchCloseBtn">
+							close
+						</span>
 						<ul id="placesList"></ul>
 						<div id="pagination"></div>
+						<span class="material-symbols-outlined pagination-toTop HIDDEN" id="paginationToTop">
+							arrow_upward
+						</span>
 					</div>
 
 					<div class="info-direction HIDDEN" id="infoDirection">
 						<div>
-							<form >
+							<form>
 								<input type="text" id="dirOrigin" value="" />
 								<button style="height: 100px;" onclick="dircetion()">길찾기</button>
 							</form>
@@ -99,18 +124,19 @@
 
 					<div class="info-my HIDDEN" id="infoMy">
 						나의 메뉴 본문
+						<!-- 토큰 유무에 따라 메시지를 표시할 h2태그 -->
 						<h2 id="statusMessage"></h2>
 						<a href="/checkpw" id="updateInfoBtn">회원정보 수정</a>
 					</div>
 
 				</div>
 
-				<!-- 토큰 유무에 따라 메시지를 표시할 h2태그 -->
+
 			</div>
 
 			<!-- 오프캔버스 하단 -->
 			<div class="offcanvas-footer">
-				
+
 				<h1>오프캔버스 하단입니다</h1>
 			</div>
 		</div>
@@ -142,12 +168,12 @@
 			</div>
 			<div id="mapWrapper">
 				<div id="map" style="width:100%;height:100%"></div> <!-- 지도를 표시할 div 입니다 -->
-				<ul id="category">
+				<!-- <ul id="category">
 					<li id="OL7" data-order="3">
 						<span class="category_bg oil"></span>
 						주유소
 					</li>
-				</ul>
+				</ul> -->
 				<div id="roadviewControl" onclick="setRoadviewRoad()"></div>
 			</div>
 		</div>

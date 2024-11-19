@@ -1,7 +1,6 @@
 
 // 함수를 사용해 로직을 보기좋게 만듬
 $(document).ready(function() {
-	console.log('현재 URL 경로:', window.location.pathname);
 	// 페이지 로드 시 토큰 확인
 	updateUIBasedOnToken();
 	// 로그인 처리

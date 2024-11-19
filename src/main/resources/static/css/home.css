@@ -52,17 +52,17 @@
 .offcanvas-body {
 
     border: 1px solid;
+    overflow: hidden ;
 }
 
 /* 메인부분 메뉴 */
 .offcanvas-body__info-header {
-    width: 80%;
-
+    width: 100%;
 }
 
 .offcanvas-body__menus {
     display: flex;
-
+    width: 100%;
     padding: 20px;
 }
 
@@ -74,7 +74,28 @@
 
 /* 메인부분 스크롤 */
 .offcanvas-body__info-body {
+    position: relative;
+    height: 680px;
     overflow-y: auto;
+}
+
+.info-search .close-btn{
+    display:block;
+    cursor: pointer;
+    position: fixed;
+    width: 24px;
+    right: 10px;
+    left: 28.5%;
+    top: 14.6%;
+    
+}
+
+.pagination-toTop {
+    width: 30px;
+    position: fixed;
+    bottom: 6.2%;
+    left: 27%;
+    cursor: pointer;
 }
 
 

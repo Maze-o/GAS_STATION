@@ -311,24 +311,29 @@ body {
 
 
 /* 지도 관련 */
+
+.category-title {
+  
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+  padding: 20px 20px 0 20px;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+
 #category {
   position: absolute;
-  top: 15px;
-  left: 33%;
-  border-radius: 5px;
-  border: 1px solid #909090;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   background: #fff;
-  overflow: hidden;
-  z-index: 2;
+  display:flex;
+  gap: 10px;
+  padding:20px 24px 24px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  width: 100%;
 }
 
 #category li {
-  float: left;
   list-style: none;
   width: 50px;
-  border-right: 1px solid #acacac;
-  padding: 6px 0;
   text-align: center;
   cursor: pointer;
 }
@@ -339,8 +344,7 @@ body {
 
 #category li:hover {
   background: #ffe6e6;
-  border-left: 1px solid #acacac;
-  margin-left: -1px;
+
 }
 
 #category li:last-child {
@@ -350,42 +354,54 @@ body {
 
 #category li span {
   display: block;
-  margin: 0 auto 3px;
-  width: 27px;
-  height: 28px;
+  margin: 3px auto 3px;
+
 }
 
 #category li .category_bg {
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;
+  /* background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat; */
+  background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/info/ico_around.png) no-repeat 0 0;
+
 }
 
+
 #category li .bank {
-  background-position: -10px 0;
+  background-position: 0 -150px;
+  width: 30px;
+  height: 30px;
 }
 
 #category li .mart {
-  background-position: -10px -36px;
+  width: 30px;
+  height: 30px;
 }
 
 #category li .pharmacy {
-  background-position: -10px -72px;
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
 }
 
 #category li .oil {
-  background-position: -10px -108px;
+
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
 }
 
 #category li .cafe {
-  background-position: -10px -144px;
+  background-position: 0 -30px;
+  width: 30px;
+  height: 30px;
 }
 
 #category li .store {
-  background-position: -10px -180px;
+  background-position: 0 -180px;
+  width: 30px;
+  height: 30px;
 }
 
-#category li.on .category_bg {
-  background-position-x: -46px;
-}
+ 
 
 .placeinfo_wrap {
   position: absolute;
@@ -486,6 +502,6 @@ body {
 #placesList .item .marker_13 {background-position: 0 -562px;}
 #placesList .item .marker_14 {background-position: 0 -608px;}
 #placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
+#pagination {margin:10px auto;text-align: center; position:absolute; position: fixed; bottom: 5%; left: 13%;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
