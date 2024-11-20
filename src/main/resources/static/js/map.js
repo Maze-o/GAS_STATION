@@ -59,9 +59,13 @@ let marker = new kakao.maps.Marker({
 	// draggable: true
 });
 
-// 장소 검색 
-function placeSearchPlaces() {
 
+
+
+
+
+// 장소 검색 시작
+function placeSearchPlaces() {
 
 	var keyword = document.getElementById('keyword').value;
 
@@ -69,8 +73,6 @@ function placeSearchPlaces() {
 		alert('키워드를 입력해주세요!');
 		return false;
 	}
-
-
 
 	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 	ps.keywordSearch(keyword, placesSearch);
@@ -87,6 +89,7 @@ function placesSearch(data, status, pagination) {
 		// 페이지 번호를 표출합니다
 		displayPagination(pagination);
 		$('#infoSearch').addClass('ACTIVE').removeClass('HIDDEN');
+		$('#infoSearch').addClass('ON').removeClass('OFF');
 		$('#infoDirection').addClass('HIDDEN').removeClass('ACTIVE');
 		$('#infoMy').addClass('HIDDEN').removeClass('ACTIVE');
 
@@ -110,7 +113,8 @@ function searchDisplayPlaces(places) {
 	// 목록을 표시 할 때 메인 내용 감추고 검색 결과만 표시
 	$('#infoMain').addClass('HIDDEN').removeClass('ACTIVE');
 	$('#infoSearch').addClass('ACTIVE').removeClass('HIDDEN');
-
+	$('#searchCloseBtn').addClass('ACTIVE').removeClass('HIDDEN');
+	$('#category li.on').removeClass('on');
 
 	var listEl = document.getElementById('placesList'),
 		menuEl = document.getElementById('menu_wrap'),
@@ -124,10 +128,12 @@ function searchDisplayPlaces(places) {
 
 	// 지도에 표시되고 있는 마커를 제거합니다
 	removeMarker();
+	// 만약 주변 탐색 카테고리가 선택된 상태이면 제거
+	currCategory = '';
 
 	for (var i = 0; i < places.length; i++) {
 		let xyCoordinate = [
-			{name: places[i].place_name, x: places[i].x, y: places[i].y},
+			{ name: places[i].place_name, x: places[i].x, y: places[i].y },
 
 		]
 		// 마커를 생성하고 지도에 표시합니다
@@ -178,15 +184,19 @@ function searchDisplayPlaces(places) {
 	map.setBounds(bounds);
 
 	// 닫기 버튼 클릭 시 메인 메뉴 표시
-	$('#searchCloseBtn').on('click', function() {
-		removeSearchElement();
-	})
-}
+	$('#searchCloseBtn').on('click', function () {
+		removeAllChildNods(listEl);
+		$('#infoMain').addClass('ACTIVE').removeClass('HIDDEN');
+		$('#infoSearch').addClass('HIDDEN').removeClass('ACTIVE');
+		$('#searchCloseBtn').addClass('HIDDEN').removeClass('ACTIVE');
+		$('#infoSearch').addClass('OFF').removeClass('ON');
+		$('#paginationToTop').addClass('HIDDEN').removeClass('ACTIVE');
+		$('#pagination').addClass('HIDDEN').removeClass('ACTIVE');
+		$('.search-input').val('');
+		removeMarker();
+		marker.setImage(null);
 
-function removeSearchElement() {
-	$('#infoMain').addClass('ACTIVE').removeClass('HIDDEN');
-	$('#infoSearch').addClass('HIDDEN').removeClass('ACTIVE');
-	
+	})
 }
 
 function addMarker(position, idx, title) {
@@ -239,11 +249,11 @@ function displayPagination(pagination) {
 	var paginationEl = document.getElementById('pagination'),
 		fragment = document.createDocumentFragment(),
 		i;
-	
-	// 상단으로 이동 버튼
-	let paginationToTop = $('#paginationToTop');
-	paginationToTop.addClass('ACTIVE').removeClass('HIDDEN');
 
+	// 상단으로 이동 버튼
+	
+	$('#paginationToTop').addClass('ACTIVE').removeClass('HIDDEN');
+	$('#pagination').addClass('ACTIVE').removeClass('HIDDEN');
 	// 기존에 추가된 페이지번호를 삭제합니다
 	while (paginationEl.hasChildNodes()) {
 		paginationEl.removeChild(paginationEl.lastChild);
@@ -268,7 +278,7 @@ function displayPagination(pagination) {
 	}
 
 	// 상단 이동!
-	paginationToTop.on('click', function() {
+	$('#paginationToTop').on('click', function () {
 		$('.offcanvas-body__info-body').scrollTop(0);
 	})
 
@@ -293,6 +303,7 @@ function removeAllChildNods(el) {
 	}
 }
 
+// 장소 검색 끝
 
 
 
@@ -319,6 +330,7 @@ var markerIcon = new kakao.maps.MarkerImage(
 		coords: '16,0,20,2,24,6,26,10,26,16,23,22,17,25,14,35,13,35,9,25,6,24,2,20,0,16,0,10,2,6,6,2,10,0'
 	});
 
+// 로드뷰 시작
 // 사용자 위치를 가져와 지도와 로드뷰 중심 설정하기
 function initMap() {
 	if (navigator.geolocation) {
@@ -519,7 +531,7 @@ function toggleOverlay(active) {
 		map.removeOverlayMapTypeId(kakao.maps.MapTypeId.ROADVIEW);
 
 		// 지도 위의 마커를 제거합니다
-		// marker.setMap(null);
+		removeMarker();
 		marker.setImage(markerIcon);
 	}
 
@@ -550,7 +562,15 @@ function closeRoadview() {
 	let position = marker.getPosition();
 	toggleMapWrapper(true, position);
 }
+// 로드뷰 끝
 
+
+
+
+
+
+
+// 주변 탐색 시작 (카테고리 선택 시 지도에 표시)
 var placeOverlay = new kakao.maps.CustomOverlay({ zIndex: 1 }),
 	contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
 	markers = [], // 마커를 담을 배열입니다
@@ -731,4 +751,5 @@ function changeCategoryClass(el) {
 	if (el) {
 		el.className = 'on';
 	}
-} 
+}
+// 주변 탐색 끝

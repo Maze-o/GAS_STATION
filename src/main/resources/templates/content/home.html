@@ -60,6 +60,9 @@
 						<li><a id="infoSearchBtn">검색</a></li>
 						<li><a id="infoDirectionBtn">길찾기</a></li>
 						<li><a id="infoMyBtn">나의 메뉴</a></li>
+						<span class="material-symbols-outlined info-search-close-btn HIDDEN" id="searchCloseBtn">
+							close
+						</span>
 					</ul>
 
 				</div>
@@ -70,47 +73,45 @@
 					<div class="info-main ACTIVE" id="infoMain">
 						<h3 class="category-title">주변 탐색</h3>
 						<ul id="category">
-							<li id="BK9" data-order="0"> 
+							<li id="BK9" data-order="0">
 								<span class="category_bg bank"></span>
 								<span>은행</span>
-							</li>       
-							<li id="MT1" data-order="1"> 
+							</li>
+							<li id="MT1" data-order="1">
 								<span class="category_bg mart"></span>
 								<span>마트</span>
-							</li>  
-							<li id="PM9" data-order="2"> 
+							</li>
+							<li id="PM9" data-order="2">
 								<span class="pharmacy material-symbols-outlined">
 									medication
 								</span>
 								<span>약국</span>
-							</li>  
-							<li id="OL7" data-order="3"> 
+							</li>
+							<li id="OL7" data-order="3">
 								<span class="oil material-symbols-outlined">
 									local_gas_station
 								</span>
 								<span>주유소</span>
-							</li>  
-							<li id="CE7" data-order="4"> 
+							</li>
+							<li id="CE7" data-order="4">
 								<span class="category_bg cafe"></span>
 								<span>카페</span>
-							</li>  
-							<li id="CS2" data-order="5"> 
+							</li>
+							<li id="CS2" data-order="5">
 								<span class="category_bg store"></span>
 								<span>편의점</span>
-							</li>      
+							</li>
 						</ul>
 
 					</div>
 
-					<div class="info-search HIDDEN" id="infoSearch">
-						<span class="material-symbols-outlined close-btn" id="searchCloseBtn">
-							close
-						</span>
+					<div class="info-search HIDDEN OFF" id="infoSearch">
+
 						<ul id="placesList"></ul>
-						<div id="pagination"></div>
+						<!-- <div id="pagination"></div>
 						<span class="material-symbols-outlined pagination-toTop HIDDEN" id="paginationToTop">
 							arrow_upward
-						</span>
+						</span> -->
 					</div>
 
 					<div class="info-direction HIDDEN" id="infoDirection">
@@ -131,14 +132,22 @@
 
 				</div>
 
+				<div class="search-controlbtn-container">
+					<div id="pagination"></div>
+					<div class="pagination-toTop-circle">
+						<span class="material-symbols-outlined pagination-toTop HIDDEN" id="paginationToTop">
+							vertical_align_top
+						</span>
+					</div>
+				</div>
 
 			</div>
 
 			<!-- 오프캔버스 하단 -->
-			<div class="offcanvas-footer">
+			<!-- <div class="offcanvas-footer">
 
 				<h1>오프캔버스 하단입니다</h1>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="map-control-view">
