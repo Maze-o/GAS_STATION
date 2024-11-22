@@ -50,29 +50,25 @@ infoMyBtn.on('click', function () {
 
 
 
-function dircetion() {
+// function dircetion() {
 
-    $.ajax({
-        type: 'GET',
-        url: 'https://apis-navi.kakaomobility.com/v1/directions?origin=127.11015314141542,37.39472714688412&destination=127.10824367964793,37.401937080111644',
-        contentType: 'application/json',
-        headers: {
-            "Authorization": "KakaoAK dd93827481a2d3acf5fdb3b0521d48a2"
-        },
-        success: function (data) {
-            alert(data.routes[0].result_msg);
-            console.log(data.routes);
+//     $.ajax({
+//         type: 'GET',
+//         url: 'https://apis-navi.kakaomobility.com/v1/directions?origin=127.11015314141542,37.39472714688412&destination=127.10824367964793,37.401937080111644',
+//         contentType: 'application/json',
+//         headers: {
+//             "Authorization": "KakaoAK dd93827481a2d3acf5fdb3b0521d48a2"
+//         },
+//         success: function (data) {
+//             alert(data.routes[0].result_msg);
+//             console.log(data.routes);
 
-        },
-        error: function (xhr) {
-            alert('실패 !' + xhr)
-            console.log(xhr);
-        }
+//         },
+//         error: function (xhr) {
+//             alert('실패 !' + xhr)
+//             console.log(xhr);
+//         }
 
-    })
-
-
-
-
+//     })
     
-}
+// }

@@ -27,7 +27,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userpk;
-	
+		
 	@Column(unique = true)
 	private String userid;
 
