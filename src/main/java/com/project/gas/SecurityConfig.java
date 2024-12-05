@@ -57,7 +57,7 @@ public class SecurityConfig {
 
 				})
 
-				.logout((logout) -> logout.logoutSuccessUrl("/").invalidateHttpSession(true))
+				.logout(logout -> logout.logoutSuccessUrl("/").invalidateHttpSession(true))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
 				// 필터 (Jwt)
