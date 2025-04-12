@@ -91,6 +91,7 @@ function updateUIBasedOnToken() {
 	const hasRefreshToken = !!localStorage.getItem('refreshToken');
 	$('#loginBtn, #signinBtn').toggle(!hasRefreshToken); // 로그인 버튼 보이기/숨기기
 	$('#logOutBtn, #myPageBtn').toggle(hasRefreshToken); // 로그아웃 버튼 보이기/숨기기
+
 }
 
 // 로그인 처리 함수

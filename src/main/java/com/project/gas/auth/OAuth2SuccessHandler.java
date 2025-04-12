@@ -58,7 +58,10 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         }
         
         User user = new User();
+<<<<<<< HEAD
         user.setProvider(provider);
+=======
+>>>>>>> f04dd3bd4d3b0616cb0c2f7e3468a92cad34002f
         user.setUsername(username);
         user.setUserid(null);
         
