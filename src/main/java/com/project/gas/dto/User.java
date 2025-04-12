@@ -27,7 +27,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userpk;
-	
+		
 	@Column(unique = true)
 	private String userid;
 
@@ -37,6 +37,9 @@ public class User {
 
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private LocalDate createDate; // 날짜
+
+	@Column(nullable = true)
+	private String provider;
 
 	@PrePersist // DB에 INSERT 되기 직전에 실행. 즉 DB에 값을 넣으면 자동으로 실행됨
 	public void createDate() {

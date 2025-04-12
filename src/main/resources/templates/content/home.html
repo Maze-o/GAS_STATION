@@ -2,73 +2,182 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{common/layout}">
 
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{/js/home.js}"></script>
+</th:block>
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<!-- 구글 아이콘 -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</th:block>
+
 <body>
 
 	<div layout:fragment="content" class="content">
 
-		<!-- 왼쪽 사이드바 오프캔버스 -->
+		<!-- 왼쪽 오프캔버스 버튼-->
 		<h4 class="offcanvas-btn">
 			<a class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
 				aria-controls="offcanvasScrolling">버튼</a>
 		</h4>
 
+		<!-- 왼쪽 오프캔버스 -->
 		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-			id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+			id="offcanvasScrolling" aria-labell edby="offcanvasScrollingLabel">
+			<!-- 오프캔버스 헤더 -->
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasScrollingLabel">안녕하세요!!</h5>
-				<button type="button" class="offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-				</button>
+				<!-- 오프캔버스 닫기 버튼 -->
+				<button type="button" id="offcanvasOffBtn" class="offcanvas-close-btn" data-bs-dismiss="offcanvas"
+					aria-label="Close"></button>
+
+				<header class="offcanvas-header__title">
+					<a href="/">로고!</a>
+				</header>
+
+				<!-- 검색 박스 -->
+				<div class="search-box">
+					<div id="menu_wrap" class="bg_white">
+						<div class="option">
+							<form id="placeSearchPlacesForm">
+								<input type="text" id="keyword" size="15" class="search-input" placeholder="장소, 주소 검색">
+								<button onclick="placeSearchPlaces(); return false;"
+									class="material-symbols-outlined search-btn">search</button>
+							</form>
+						</div>
+					</div>
+				</div>
+<!--ㅎㅇ;-->
 			</div>
-			<div class="offcanvas-body">
+
+			<!-- 오프캔버스 메인 부분 -->
+			<div class="offcanvas-body p-0">
+
+				<div class="offcanvas-body__info-header">
+<!--					<ul class="offcanvas-body__menus">-->
+<!--						<li><a id="infoSearchBtn">검색</a></li>-->
+<!--						<li><a id="infoMyBtn">나의 메뉴</a></li>-->
+						<span class="material-symbols-outlined info-search-close-btn HIDDEN" id="searchCloseBtn">
+							close
+						</span>
+<!--					</ul>-->
+
+				</div>
+
+
+				<div class="offcanvas-body__info-body">
+
+					<div class="info-main ACTIVE" id="infoMain">
+						<h3 class="category-title">주변 탐색</h3>
+						<ul id="category">
+							<li id="BK9" data-order="0">
+								<span class="category_bg bank"></span>
+								<span>은행</span>
+							</li>
+							<li id="MT1" data-order="1">
+								<span class="category_bg mart"></span>
+								<span>마트</span>
+							</li>
+							<li id="PM9" data-order="2">
+								<span class="pharmacy material-symbols-outlined">
+									medication
+								</span>
+								<span>약국</span>
+							</li>
+							<li id="OL7" data-order="3">
+								<span class="oil material-symbols-outlined">
+									local_gas_station
+								</span>
+								<span>주유소</span>
+							</li>
+							<li id="CE7" data-order="4">
+								<span class="category_bg cafe"></span>
+								<span>카페</span>
+							</li>
+							<li id="CS2" data-order="5">
+								<span class="category_bg store"></span>
+								<span>편의점</span>
+							</li>
+						</ul>
+
+					</div>
+
+					<div class="info-search HIDDEN OFF" id="infoSearch">
+						<!-- 검색 장소가 표시될 부분 -->
+						<ul id="placesList"></ul>
+				
+					</div>
+
+					<div class="info-direction HIDDEN" id="infoDirection">
+						<div>
+							<form>
+								<input type="text" id="dirOrigin" value="" />
+								<button style="height: 100px;" onclick="dircetion()">길찾기</button>
+							</form>
+						</div>
+					</div>
+
+					<div class="info-my HIDDEN" id="infoMy">
+						나의 메뉴 본문
+						<!-- 토큰 유무에 따라 메시지를 표시할 h2태그 -->
+						<h2 id="statusMessage"></h2>
+						<a href="/checkpw" id="updateInfoBtn">회원정보 수정</a>
+					</div>
+
+				</div>
+
+				<!-- 검색 결과에 대한 페이지네이션 부분 -->
+				<div class="search-controlbtn-container">
+					<div id="pagination"></div>
+					<div class="pagination-toTop-circle">
+						<span class="material-symbols-outlined pagination-toTop HIDDEN" id="paginationToTop">
+							vertical_align_top
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 오프캔버스 하단 -->
+			<!-- <div class="offcanvas-footer">
+
+				<h1>오프캔버스 하단입니다</h1>
+			</div> -->
+		</div>
+
+		<div class="map-control-view">
+			<button onclick="initMap()" class="set-center-btn"></button>
+			<div class="zoom-control">
+				<button onclick="zoomIn()" class="zoom-in-btn"></button>
+				<button onclick="zoomOut()" class="zoom-out-btn"></button>
+				<div id="zoomControl" style="width:300px;">
+
+				</div>
 
 			</div>
 		</div>
-
 		<!-- 로그인, 회원가입 버튼 -->
 		<h2 class="sign-btn">
-			<a href="/login" id="loginBtn"  class="btn btn-light">로그인</a>
+			<a href="/login" id="loginBtn" class="btn btn-light">로그인</a>
 			<button id="logOutBtn" class="btn btn-light">로그아웃</button>
+			<!-- 회원정보 수정 버튼 -->
+			<a href="/checkpw" id="myPageBtn" class="btn btn-light">정보수정</a>
 			<a href="/signup" id="signinBtn" class="btn btn-light">회원가입</a>
+
 		</h2>
 
-		<!-- 메인 지도 -->
-		<div class="map-container">
 
-			<div id="map-wrapper">
-				<div id="map" class="main-map"></div>
-				<div id="roadviewControl" onclick="setRoadviewRoad()"></div>
-			</div>
-
+		<div id="container">
 			<div id="rvWrapper">
-				<div id="roadview"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+				<div id="roadview" style="width:100%;height:100%;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
 				<div id="close" title="로드뷰닫기" onclick="closeRoadview()"><span class="img"></span></div>
 			</div>
-			<ul id="category" class="category-btn">
-				<li id="BK9" data-order="0">
-					<span class="category_bg bank"></span>
-					은행 
-				</li>
-				<li id="MT1" data-order="1">
-					<span class="category_bg mart"></span>
-					마트
-				</li>
-				<li id="PM9" data-order="2">
-					<span class="category_bg pharmacy"></span>
-					약국
-				</li>
-				<li id="OL7" data-order="3">
-					<span class="category_bg oil"></span>
-					주유소
-				</li>
-				<li id="CE7" data-order="4">
-					<span class="category_bg cafe"></span>
-					카페
-				</li>
-				<li id="CS2" data-order="5">
-					<span class="category_bg store"></span>
-					편의점
-				</li>
-			</ul>
+			<div id="mapWrapper">
+				<div id="map" style="width:100%;height:100%"></div> <!-- 지도를 표시할 div 입니다 -->
+				<div id="roadviewControl" onclick="setRoadviewRoad()"></div>
+			</div>
 		</div>
 
 
@@ -77,9 +186,11 @@
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9decf967a5d3e1252636891fb7f05a98&libraries=services">
 			</script>
 		<script src="/js/map.js"></script>
-		
+
 	</div>
-		
+
+
+
 </body>
 
 </html>

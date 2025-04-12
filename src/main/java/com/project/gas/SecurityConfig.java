@@ -21,7 +21,6 @@ import com.project.gas.auth.CustomOAuth2UserService;
 import com.project.gas.auth.OAuth2ErrorHandler;
 import com.project.gas.auth.OAuth2SuccessHandler;
 import com.project.gas.auth.PrincipalDetailsService;
-import com.project.gas.filter.CustomAccessFilter;
 import com.project.gas.jwt.JwtAuthenticationFilter;
 
 import lombok.AllArgsConstructor;
@@ -53,26 +52,17 @@ public class SecurityConfig {
 
 				// OAuth2 사용자 정보를 처리할 서비스 설정
 				.oauth2Login(oauth2 -> {
-
-//					oauth2.loginProcessingUrl("/signin/oauth2/code/*") // 이거 설정 안하면 oauth2아무것도안된다!!(service, handler 작동
-					// 안된다!!)
-					// default경로는 login인데 내가 바꿔서 경로를 못찾음
 					oauth2.loginPage("/login").userInfoEndpoint(userInfo -> userInfo.userService(oAuth2UserService))
 							.successHandler(oAuth2SuccessHandler).failureHandler(oAuth2ErrorHandler);
 
-//							.successHandler((request, response, authentication) -> {
-//								oAuth2SuccessHandler.onAuthenticationSuccess(request, response, authentication);
-//							}).failureHandler((request, response, exception) -> {
-//								oAuth2ErrorHandler.onAuthenticationFailure(request, response, exception);
-//							});
 				})
 
-				.logout((logout) -> logout.logoutSuccessUrl("/").invalidateHttpSession(true))
+				.logout(logout -> logout.logoutSuccessUrl("/").invalidateHttpSession(true))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
 				// 필터 (Jwt)
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.addFilterAfter(new CustomAccessFilter(), UsernamePasswordAuthenticationFilter.class)
+//				.addFilterAfter(new CustomAccessFilter(), UsernamePasswordAuthenticationFilter.class)
 				.addFilterAfter(jwtAuthFilter, OAuth2LoginAuthenticationFilter.class);
 
 		return http.build();
@@ -90,12 +80,6 @@ public class SecurityConfig {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
-
-	// CustomOAuth2UserService를 빈으로 등록하여 OAuth2 로그인 시 사용자 정보 처리
-//	@Bean
-//	public CustomOAuth2UserService customOAuth2UserService() {
-//		return new CustomOAuth2UserService(userService, userRepo);
-//	}
 
 	// 정적 리소스에 대한 접근을 인증 없이 허용 (security를 적용하지 않을 리소스)
 	@Bean

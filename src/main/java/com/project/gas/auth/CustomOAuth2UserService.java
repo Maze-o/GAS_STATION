@@ -28,10 +28,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		OAuth2User oAuth2User = super.loadUser(userRequest); // OAuth2 사용자 정보 로드
+
 		logger.info("OAuth2 User Info: " + oAuth2User.getAttributes());
 		// 사용자 정보를 기반으로 DB에서 사용자 검색 또는 생성
 		User user = processOAuth2User(oAuth2User); // 직접 처리 메서드 호출
-		System.out.println("user : " + user);
 
 		// PrincipalDetails 생성 및 반환
 		return new PrincipalDetails(user, oAuth2User.getAttributes());
