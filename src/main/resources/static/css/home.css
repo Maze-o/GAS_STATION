@@ -2,7 +2,6 @@
 .offcanvas-header {
     width: 100%;
     height: 120px;
-    border: 1px solid;
     display: block !important;
 }
 
@@ -16,7 +15,7 @@
     position: relative;
     width: 100%;
     height: 50px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 /* 검색 인풋 */
@@ -51,7 +50,6 @@
 /* 오프캔버스 메인 */
 .offcanvas-body {
     position: relative;
-    border: 1px solid;
     overflow: hidden ;
 }
 
@@ -86,7 +84,7 @@
     width: 24px;
     right: 10px;
     left: 18.5%;
-    top: 14.6%;
+    top: 9%;
     
 }
 
@@ -117,7 +115,7 @@
     position: absolute;
     font-size: 27px !important;
     cursor: pointer;
-    right: 14%;
+    right: 15%;
     top: 15%;
 }
 

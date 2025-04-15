@@ -162,6 +162,26 @@ body {
   background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/shadow/img_navi.png) no-repeat 0 0;
 }
 
+
+.offcanvas-open-btn {
+  overflow: hidden;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 28px;
+  height: 66px;
+  font-size: 0;
+  line-height: 0;
+  background: url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/shadow/img_navi.png) no-repeat 0 0;
+  background-position: 0 -60px;
+  text-indent: -9999px;
+  cursor: pointer;
+
+}
+
 /* 로그인 , 회원가입 버튼 */
 .sign-btn {
   position: absolute;

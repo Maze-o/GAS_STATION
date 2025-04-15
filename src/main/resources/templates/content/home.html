@@ -19,10 +19,15 @@
 	<div layout:fragment="content" class="content">
 
 		<!-- 왼쪽 오프캔버스 버튼-->
-		<h4 class="offcanvas-btn">
+		<!-- <h4 class="offcanvas-btn">
 			<a class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
 				aria-controls="offcanvasScrolling">버튼</a>
-		</h4>
+				
+		</h4> -->
+
+			<span class="offcanvas-open-btn" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></span>
+		
 
 		<!-- 왼쪽 오프캔버스 -->
 		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
@@ -33,9 +38,9 @@
 				<button type="button" id="offcanvasOffBtn" class="offcanvas-close-btn" data-bs-dismiss="offcanvas"
 					aria-label="Close"></button>
 
-				<header class="offcanvas-header__title">
+				<!-- <header class="offcanvas-header__title">
 					<a href="/">로고!</a>
-				</header>
+				</header> -->
 
 				<!-- 검색 박스 -->
 				<div class="search-box">
@@ -49,20 +54,20 @@
 						</div>
 					</div>
 				</div>
-<!--ㅎㅇ;-->
+				<!--ㅎㅇ;-->
 			</div>
 
 			<!-- 오프캔버스 메인 부분 -->
 			<div class="offcanvas-body p-0">
 
 				<div class="offcanvas-body__info-header">
-<!--					<ul class="offcanvas-body__menus">-->
-<!--						<li><a id="infoSearchBtn">검색</a></li>-->
-<!--						<li><a id="infoMyBtn">나의 메뉴</a></li>-->
-						<span class="material-symbols-outlined info-search-close-btn HIDDEN" id="searchCloseBtn">
-							close
-						</span>
-<!--					</ul>-->
+					<!--					<ul class="offcanvas-body__menus">-->
+					<!--						<li><a id="infoSearchBtn">검색</a></li>-->
+					<!--						<li><a id="infoMyBtn">나의 메뉴</a></li>-->
+					<span class="material-symbols-outlined info-search-close-btn HIDDEN" id="searchCloseBtn">
+						close
+					</span>
+					<!--					</ul>-->
 
 				</div>
 
@@ -107,7 +112,7 @@
 					<div class="info-search HIDDEN OFF" id="infoSearch">
 						<!-- 검색 장소가 표시될 부분 -->
 						<ul id="placesList"></ul>
-				
+
 					</div>
 
 					<div class="info-direction HIDDEN" id="infoDirection">
@@ -131,7 +136,7 @@
 				<!-- 검색 결과에 대한 페이지네이션 부분 -->
 				<div class="search-controlbtn-container">
 					<div id="pagination"></div>
-					<div class="pagination-toTop-circle">
+					<div class="pagination-toTop-circle HIDDEN" id="paginationToTopCircle">
 						<span class="material-symbols-outlined pagination-toTop HIDDEN" id="paginationToTop">
 							vertical_align_top
 						</span>
@@ -183,7 +188,7 @@
 
 		<!-- 외부파일로 지도 js 관리 -->
 		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9decf967a5d3e1252636891fb7f05a98&libraries=services">
+			src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9decf967a5d3e1252636891fb7f05a98&libraries=services">
 			</script>
 		<script src="/js/map.js"></script>
 

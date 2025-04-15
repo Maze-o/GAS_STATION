@@ -191,6 +191,8 @@ function searchDisplayPlaces(places) {
 		$('#searchCloseBtn').addClass('HIDDEN').removeClass('ACTIVE');
 		$('#infoSearch').addClass('OFF').removeClass('ON');
 		$('#paginationToTop').addClass('HIDDEN').removeClass('ACTIVE');
+		$('#paginationToTopCircle').addClass('HIDDEN').removeClass('ACTIVE');
+		
 		$('#pagination').addClass('HIDDEN').removeClass('ACTIVE');
 		$('.search-input').val('');
 		removeMarker();
@@ -253,6 +255,8 @@ function displayPagination(pagination) {
 	// 상단으로 이동 버튼
 	
 	$('#paginationToTop').addClass('ACTIVE').removeClass('HIDDEN');
+	$('#paginationToTopCircle').addClass('ACTIVE').removeClass('HIDDEN');
+
 	$('#pagination').addClass('ACTIVE').removeClass('HIDDEN');
 	// 기존에 추가된 페이지번호를 삭제합니다
 	while (paginationEl.hasChildNodes()) {
