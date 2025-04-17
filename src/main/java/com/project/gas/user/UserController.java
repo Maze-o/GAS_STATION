@@ -167,7 +167,7 @@ public class UserController {
 
 		// 사용자가 존재하지 않을 경우
 		if (!user.isPresent()) {
-			throw new IllegalArgumentException("사용자를 찾을 수 없습니다."); 
+			throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
 		}
 
 		// 비밀번호가 빈값인지 확인
@@ -192,17 +192,18 @@ public class UserController {
 	public ResponseEntity<Map<String, String>> updateinfo(@RequestHeader(value = "Authorization") String token,
 			@RequestBody UpdateUserRequest updateRequest) {
 
-		// 토큰에서 username 추출
-		String jwtToken = token.replace("Bearer ", "");
-		String username = jwtProvider.extractUsername(jwtToken);
 
-		userService.updateUser(username, updateRequest);
+		// 인증된 사용자 정보 가져오기
+		User user = userService.getCurrentUser()
+				.orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다"));
+
+		// userid 꺼내서 서비스에 전달
+		userService.updateUser(user.getUserid(), updateRequest);
 
 		Map<String, String> map = new HashMap<>();
 		map.put("success", "사용자 정보 업데이트가 완료됐습니다!");
 
 		return ResponseEntity.ok(map);
-
 	}
 
 }

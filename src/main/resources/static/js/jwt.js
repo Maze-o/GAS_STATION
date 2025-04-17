@@ -5,7 +5,6 @@ async function checkAndRefreshToken() {
         // 토큰 갱신 요청
         const newToken = await refreshToken();
         if (newToken) {
-            console.log('새로운 토큰 저장 완료')
             localStorage.setItem('accessToken', newToken); // 새로운 토큰 저장
             return newToken; // 새로운 토큰 반환
         } else {
@@ -36,15 +35,12 @@ function isTokenExpired(token) {
 
 // 토큰 유효성 체크 및 갱신 요청 함수
 async function refreshToken() {
-    console.log('refreshToken함수 호출')
     try {
-        console.log('refreshToken ajax 함수 호출')
         const response = await $.ajax({
             url: '/auth/refresh', // 토큰 갱신 엔드포인트
             type: 'POST',
             headers: getAuthHeader(),
         });
-        console.log('repsonse : ', response)
         return response.accessToken; // 새로운 토큰 반환
     } catch (error) {
         console.error('토큰 갱신 실패:', error);

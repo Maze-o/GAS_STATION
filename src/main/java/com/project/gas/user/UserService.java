@@ -1,9 +1,6 @@
 package com.project.gas.user;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -169,10 +166,18 @@ public class UserService {
 		return tempPw;
 	}
 
-	// 랜덤 비밀번호 생성
+	// 영어 소문자 + 숫자 포함 8자리 랜덤 문자열 생성
 	private String generateRandomPw() {
-		// UUID를 생성하고 문자열로 변환 후 처음 8자리 반환
-		return UUID.randomUUID().toString().substring(0, 8);
+		String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+
+		for (int i = 0; i < 8; i++) {
+			int index = random.nextInt(chars.length());
+			sb.append(chars.charAt(index));
+		}
+
+		return sb.toString();
 	}
 
 	// 사용자의 정보 가져오기
@@ -197,12 +202,13 @@ public class UserService {
 		String userpw = updateRequest.getUserpw();
 		System.out.println("username: " + username);
 		System.out.println("userpw: " + userpw);
-		// 둘 다 null인 경우 예외 처리 (javascript 비활성화 대비)
+
+		// 최소 하나의 정보는 변경할 수 있어야 하므로, 둘 다 null일 경우 예외 처리
 		if (username == null && userpw == null) {
 			throw new IllegalArgumentException("최소 하나의 정보는 변경해야 합니다.");
 		}
 
-		// 닉네임 유효성 검사
+		// 닉네임 유효성 검사 (username이 null이 아니고 길이가 적당할 때만 변경)
 		if (username != null && !username.trim().isEmpty()) {
 			if (username.length() < USERNAME_MIN_LENGTH || username.length() > USERNAME_MAX_LENGTH) {
 				throw new IllegalArgumentException(
@@ -211,7 +217,7 @@ public class UserService {
 			user.setUsername(username);
 		}
 
-		// 비밀번호가 null 이 아닐 때만 업데이트 (username만 변경 할 수 있도록)
+		// 비밀번호가 null 이 아닐 때만 업데이트 (username만 변경할 수 있도록)
 		if (userpw != null && !userpw.trim().isEmpty()) {
 			// 비밀번호 유효성 검사
 			if (userpw.length() < USERPW_MIN_LENGTH || userpw.length() > USERPW_MAX_LENGTH) {

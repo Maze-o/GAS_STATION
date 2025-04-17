@@ -16,10 +16,8 @@ $(document).ready(function () {
 })
 
 $('#findpwForm').on('submit', function(event) {
-	console.log('js submit 발동');
-	console.log('event : ', event);
+
 	event.preventDefault(); // 기본 폼 제출 방지
-	alert('비밀번호 찾기 버튼 누름');
 	findPw(); // 비밀번호 찾기 처리
 });
 

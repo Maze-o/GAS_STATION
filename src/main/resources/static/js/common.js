@@ -32,7 +32,6 @@ $(document).ready(function() {
 		// 토큰 정보가 있다면 닉네임 표시, 회원정보 수정 버튼 표시
 		$('#statusMessage').text(`안녕하세요 ${decodeToken.username}님!`);
 		// 회원정보수정 버튼 표시
-		console.log('decodeToken : ', decodeToken);
 		$('#myPageBtn').val(decodeToken.username);
 
 		// 일반 로그인이면 회원정보수정 버튼 표시

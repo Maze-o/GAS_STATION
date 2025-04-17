@@ -75,7 +75,7 @@
 
 
 $(document).ready(function () {
-	
+	  $('#updateInfoBtn').css('display', 'block');
     // 회원 정보 수정 처리
     $('#updateInfoForm').on('submit', function (event) {
         event.preventDefault(); // 기본 폼 제출 방지
@@ -88,6 +88,14 @@ $(document).ready(function () {
         updateUpdateButtonState(); // 버튼 상태 업데이트
     });
 });
+
+function getAuthHeader() {
+    const accessToken = localStorage.getItem('accessToken'); // access token만 뽑아옴
+    if (accessToken) {
+        return { 'Authorization': 'Bearer ' + accessToken };
+    }
+    return {};
+}
 
 // 회원 정보 수정 처리 함수
 function handleUpdateInfo() {
@@ -118,22 +126,39 @@ function handleUpdateInfo() {
 
 // 버튼 상태 업데이트 함수
 function updateUpdateButtonState() {
-    const isUsernameValid = validateField($('#inputUsername'));
-    const isPasswordValid = validateField($('#inputPassword'));
-    const isPasswordChkValid = validateField($('#inputPasswordChk'));
+    const usernameVal = $('#inputUsername').val();
+    const passwordVal = $('#inputPassword').val();
+    const passwordChkVal = $('#inputPasswordChk').val();
 
-    // 모든 유효성이 통과했을 때 버튼 활성화
-    if (isUsernameValid && isPasswordValid && isPasswordChkValid) {
+    const isUsernameValid = usernameVal ? validateField($('#inputUsername')) : false;
+    const isPasswordValid = passwordVal ? validateField($('#inputPassword')) : false;
+    const isPasswordChkValid = passwordChkVal ? validateField($('#inputPasswordChk')) : false;
+
+    let canEnable = false;
+
+    // 조건 1: 닉네임만 유효하면 OK
+    if (usernameVal && isUsernameValid && !passwordVal && !passwordChkVal) {
+        canEnable = true;
+    }
+
+    // 조건 2: 비밀번호 & 확인만 유효하면 OK
+    else if (!usernameVal && passwordVal && passwordChkVal && isPasswordValid && isPasswordChkValid) {
+        canEnable = true;
+    }
+
+    // 조건 3: 전부 입력했고 유효하면 OK
+    else if (usernameVal && isUsernameValid && passwordVal && passwordChkVal && isPasswordValid && isPasswordChkValid) {
+        canEnable = true;
+    }
+
+    // 버튼 상태 설정
+    if (canEnable) {
         $('#updateInfoBtn').removeClass('btn-disabled').addClass('btn-active').removeAttr('disabled');
     } else {
         $('#updateInfoBtn').addClass('btn-disabled').removeClass('btn-active').attr('disabled', true);
     }
-
-    // 각 필드가 비어 있는지 체크하여 버튼 비활성화
-    if (!$('#inputUsername').val() || !$('#inputPassword').val() || !$('#inputPasswordChk').val()) {
-        $('#updateInfoBtn').addClass('btn-disabled').removeClass('btn-active').attr('disabled', true);
-    }
 }
+
 
 // 유효성 검사 및 에러 메시지 추가 함수
 function validateField($field) { 
@@ -151,7 +176,6 @@ function validateField($field) {
                 format: '닉네임은 한글, 영문자, 숫자만 사용할 수 있습니다.',
             },
             test: () => {
-				console.log('test발동');
                 if (value.length < 3 || value.length > 10) {
                     addErrorMessage($field, rules.inputUsername.messages.length);
                     isValid = false;

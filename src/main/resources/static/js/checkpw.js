@@ -43,9 +43,7 @@ $('#pwChkForm').on('submit', async function (e) {
 			location.href = '/updateInfo';
 		},
 		error: function (xhr) {
-			console.log(xhr)
 			const errorResponse = xhr.responseJSON;
-			console.log(errorResponse);
         
 			// errorResponse가 정의되어 있으면 사용자에게 오류 메시지를 보여줍니다.
 			if (errorResponse) {

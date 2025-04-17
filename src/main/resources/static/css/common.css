@@ -116,11 +116,14 @@ body {
   color: rgba(55, 56, 60, 0.16);
   border: none;
   margin-top: 50px;
+  cursor: none;
+  pointer-events: none;
 }
 
 /* 버튼 활성화 상태 */
 .btn-active {
   outline: none;
+  display: block;
   background-color: inherit;
   border-radius: 10px;
   cursor: pointer;
@@ -131,6 +134,7 @@ body {
   color: #f4f4f5;
   border: none;
   margin-top: 50px;
+  pointer-events: auto;
 }
 
 /* 왼쪽 오프캔버스 버튼 */
